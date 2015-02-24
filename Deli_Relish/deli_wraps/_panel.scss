@@ -1,0 +1,18 @@
+.panel-wrap{
+	padding: $full-spacing 0px;
+
+	.grid{
+		position:relative;
+
+		.left{
+			position:absolute;
+			top:0;
+			bottom:0;
+			height:100%;
+
+			img{
+				@include vertical-align;
+			}
+		}
+	}
+}

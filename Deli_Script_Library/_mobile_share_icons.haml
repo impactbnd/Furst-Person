@@ -1,0 +1,22 @@
+$('.mobile-share-icons').each(function(index) {
+var mbi = $(this);
+var data="url="+$(this).attr('rel')+"&apikey=42705988166d6b53252a98c5f16101ec3e391e34"
+//console.log(data);
+$.ajax({
+url: "http://free.sharedcount.com",
+type: "get",
+data: data,
+dataType: "json",
+success: function(json) {
+var Facebook = json.Facebook.total_count;
+var Twitter = json.Twitter;
+var linkedIN = json.LinkedIn;
+var GooglePlusOne = json.GooglePlusOne;
+
+$(mbi).find(".twCount").html(Twitter);
+$(mbi).find(".inCount").html(linkedIN);
+$(mbi).find(".fbCount").html(Facebook);
+$(mbi).find(".gplusCount").html(GooglePlusOne);
+}
+});
+});

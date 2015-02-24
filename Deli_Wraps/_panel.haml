@@ -1,0 +1,49 @@
+{% choice "panel_#{block}_layout" label="Section #{block}: Where would you like the Image in this section aligned?", choices="Left, Right,Centered - Text Only", export_to_template_context=True %}
+
+{% image "panel_#{block}_background" export_to_template_context=True, label="Section #{block}: Choose a background for this section" %}
+
+{% image "panel_#{block}_image" export_to_template_context=True, label="Section #{block}: Choose a Image for this section" %}
+
+{% header "panel_#{block}_header" export_to_template_context=True, label="Section #{block}: Choose a Header for this section", header_tag="h2", value="This is an H2" %}
+
+{% rich_text "panel_#{block}_content" export_to_template_context=True, label="Section #{block}: Place content for section here", no_wrapper=True, html="<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>" %}
+
+%div{:class => "panel-wrap panel_#{block}", :id => "scroll-#{block}", :style => "background: url('{{ widget_data.panel_#{block}_background.src }}')no-repeat;background-size: cover"}
+
+	.grid.soft--sides
+		{% if widget_data.panel_#{block}_layout.value == "Left" %}
+		
+		.grid__item.one-third>
+			.left.hard
+				%img{:src => "{{ widget_data.panel_#{block}_image.src }}"}
+		
+		.right.grid__item.two-thirds>
+			%h2
+				{{ widget_data.panel_#{block}_header.value }}
+			{{ widget_data.panel_#{block}_content.html }}
+
+		{% elif widget_data.panel_#{block}_layout.value == "Right" %}
+		.left.grid__item.two-thirds.hard>
+			%h2
+				{{ widget_data.panel_#{block}_header.value }}
+			{{ widget_data.panel_#{block}_content.html }}
+		
+		.right.grid__item.one-third>
+			%img{:src => "{{ widget_data.panel_#{block}_image.src }}"}
+
+
+		{% elif widget_data.panel_#{block}_layout.value == "Centered - Text Only" %}
+		.center.hard>
+			%h2
+				{{ widget_data.panel_#{block}_header.value }}
+			{{ widget_data.panel_#{block}_content.html }}
+		
+		{% else%}
+		.left.grid__item.two-thirds.hard>
+			%h2
+				{{ widget_data.panel_#{block}_header.value }}
+			{{ widget_data.panel_#{block}_content.html }}
+		
+		.right.grid__item.one-third>
+			%img{:src => "{{ widget_data.panel_#{block}_image.src }}"}
+		{% endif %}

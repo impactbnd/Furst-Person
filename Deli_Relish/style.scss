@@ -1,0 +1,50 @@
+/*------------------------------------
+
+[hubspot-metadata]
+{
+    "category": "asset", 
+    "creatable": true, 
+    "path": "custom/page/IMPACT/style.css"
+}
+[end-hubspot-metadata]
+
+------------------------------------*/
+
+/* {% include "hubspot/styles/responsive/required_base.css" %} */
+
+@charset "UTF-8";
+/*------------------------------------*\
+    STYLE.CSS
+\*------------------------------------*/
+/**
+ *
+ * sass --watch style.scss:style.min.css --style compressed
+ *
+ * Here we pull in some variables, include the inuit.css framework, then add our
+ * project-specific components afterwards.
+ */
+
+
+// IMPACT FRAMEWORK SETUP
+
+// Base Framework
+@import "base/deli-base";
+
+// Deli Plates 
+@import "deli_plates/deli-plates";
+
+// Deli Wraps 
+//@import "deli_wraps/deli-wraps";
+
+// Deli Cold Cuts 
+//@import "deli_cold_cuts/deli-cold-cuts";
+
+
+/*** She’s all yours, cap’n...Put your custom relishes here: ***/
+
+// Custom Relish Partials should be formatted like this: @import "Custom_Relish/samplepartial";
+@import "../Custom_Relish/about_timeline";
+@import "../Custom_Relish/why_fp";
+@import "../Custom_Relish/solutions_fp";
+@import "../Custom_Relish/product_categories";
+@import "../Custom_Relish/how_it_works";

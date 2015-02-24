@@ -1,0 +1,118 @@
+// BASE FRAMEWORK FILES
+
+// Bourbon Include
+@import "bourbon", "neat";
+
+// Inuit Framework CSS
+@import "base/inuit.css/inuit";
+
+// Animate.css Include 
+@import "base/animate";
+
+// Default Styles
+/* html, a {
+	-webkit-font-smoothing: antialiased !important;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+	text-rendering: optimizeLegibility;
+	font-weight: 300;
+	font-family: $body-font;
+	position:relative;
+}
+
+body{
+	padding-bottom: $body-no-padding;
+	font-size:100%;
+}
+
+// Use this class on your body to give your page space between the footer and content above
+.body-padding{
+	padding-bottom: $body-padding;
+}
+
+/* Basic Container */
+
+.grid, .g {
+	max-width: 73em;
+	margin: 0 auto;
+	@extend .soft--sides;
+}
+
+/* Default Link Color */
+/*
+a {
+	text-decoration: none;
+	color: $brand-primary-color;
+
+	&:hover {
+		color: lighten($brand-color, 10%);
+	}
+}
+
+/* Default Image Sizing */
+/*
+img{
+	max-width:100%;
+}
+
+/* Use this to remove whitespace between inline elements */
+.whitespace{
+	margin-right:-4px;
+}
+
+/* Setting Base Style Fonts */
+/*
+h1, h2, h3 {
+	font-family: $header-font;
+}
+
+h1 {
+}
+
+h2 {
+}
+
+h3 {
+}
+
+h4 {
+}
+
+h5 {
+}
+
+/* Setting Base Button Styles*/
+
+.tofu-button{
+	display:inline-block
+}
+
+.mofu-button{
+	display:inline-block
+}
+
+.bofu-button{
+	display:inline-block
+}
+
+.stroke-button{
+	display:inline-block
+}
+
+/*Base Button Sizes*/
+
+.small{
+	display:inline-block
+}
+
+.medium{
+	display:inline-block
+}
+
+.large{
+	display:inline-block
+}
+
+.full{
+	width:100%;
+	text-align:center;
+}

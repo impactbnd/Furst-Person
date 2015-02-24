@@ -1,0 +1,28 @@
+{% header "resource_#{block}_title" label="Resource #{block}: What is the title of the resource?", header_tag="h3", value="Resource title", export_to_template_context=True %}
+
+{% text "resource_#{block}_category" label="Resource #{block}: Choose categories for this resources (must match an available category above, put a space between multiple categories)", value="samplecategory", export_to_template_context=True %}
+
+{% linked_image "resource_#{block}_image" label="Resource #{block}: Choose the image for your template resource", alt="Place Template Description Here", src="http://cdn2.hubspot.net/hub/298890/file-998941801-png/Assets/filler-image.png", export_to_template_context=True %}
+
+
+<div class="resource-item mix text--center whitespace hard grid_item one-quarter lap-one-half palm-one-whole {{ widget_data.resource_#{block}_category.value }}" data-myorder="{{ #{block} }}">
+
+<div class='inner'>
+
+<div class='img-inner' style="background-image:url('{{ widget_data.resource_#{block}_image.src }}')">
+
+<span class='tooltip'>
+<a href="{{ widget_data.resource_#{block}_image.link }}">{{ widget_data.resource_#{block}_image.alt }}</a>
+</span>
+
+</div>
+
+<h4 class='txt-inner'>
+{{ widget_data.resource_#{block}_title.value }}
+</h4>
+
+</div>
+
+{% cta "resource_#{block}_button" label="Resource #{block}:  Choose download button" %}
+
+</div>

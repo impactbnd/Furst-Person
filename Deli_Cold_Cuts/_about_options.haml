@@ -1,0 +1,109 @@
+.grid.main-content
+	{% header "about_featured_title" label="Columns Section: Choose a Heading for this section", header_tag="h3", value="Featured Header" %}
+	
+	.explainer	
+		%p
+			{% text "my_text" label="Columns Section: Place additional text here", value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit velit sed eros laoreet varius. Aenean vel accumsan ligula. Vestibulum pharetra orci eget tortor consequat varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit velit sed eros laoreet varius. Aenean vel accumsan ligula." %}
+
+	{% choice "about_options_#{block}" label="Columns Section: How many columns would you like in this section?", choices="2 Column, 3 Column, 4 Column", export_to_template_context=True %}
+
+	{% linked_image "about_options_image_#{block}" label="Columns Section | Column 1: Choose an image", alt="Place Template Description Here", src="http://cdn2.hubspot.net/hub/364498/file-1355551702-jpg/ryan-coatesNEW-inbound-marketing-agency.jpg", export_to_template_context=True %}
+	{% header "about_options_header_#{block}" label="Columns Section | Column 1: Choose your Header", header_tag="h3", value="Resource title", export_to_template_context=True %}
+	{% text "about_options_text_#{block}" label="Columns Section | Column 1: Place your text here", no_wrap=True, value="This is where the paragraph text will end up going, yahoo!", export_to_template_context=True %}
+	{% cta "about_options_cta_button_#{block}" export_to_template_context=True, label="Columns Section | Column 1: Choose Your CTA", no_wrapper=True %}
+
+	{% linked_image "about_options_image_two_#{block}" label="Columns Section | Column 2: Choose an image", alt="Place Template Description Here", src="http://cdn2.hubspot.net/hub/364498/file-1355551702-jpg/ryan-coatesNEW-inbound-marketing-agency.jpg", export_to_template_context=True %}
+	{% header "about_options_header_two_#{block}" label="Columns Section | Column 2: Choose your Header", header_tag="h3", value="Resource title", export_to_template_context=True %}
+	{% text "about_options_text_two_#{block}" label="Columns Section | Column 2: Place your text here", no_wrap=True, value="This is where the paragraph text will end up going, yahoo!", export_to_template_context=True %}
+	{% cta "about_options_cta_button_two_#{block}" export_to_template_context=True, label="Columns Section | Column 2: Choose Your CTA", no_wrapper=True %}
+
+	{% linked_image "about_options_image_three_#{block}" label="Columns Section | Column 3: Choose an image", alt="Place Template Description Here", src="http://cdn2.hubspot.net/hub/364498/file-1355551702-jpg/ryan-coatesNEW-inbound-marketing-agency.jpg", export_to_template_context=True %}
+	{% header "about_options_header_three_#{block}" label="Columns Section | Column 3: Choose your Header", header_tag="h3", value="Resource title", export_to_template_context=True %}
+	{% text "about_options_text_three_#{block}" label="Columns Section | Column 3: Place your text here", no_wrap=True, value="This is where the paragraph text will end up going, yahoo!", export_to_template_context=True %}
+	{% cta "about_options_cta_button_three_#{block}" export_to_template_context=True, label="Columns Section | Column 3: Choose Your CTA", no_wrapper=True %}
+
+	{% linked_image "about_options_image_four_#{block}" label="Columns Section | Column 4: Choose an image", alt="Place Template Description Here", src="http://cdn2.hubspot.net/hub/364498/file-1355551702-jpg/ryan-coatesNEW-inbound-marketing-agency.jpg", export_to_template_context=True %}
+	{% header "about_options_header_four_#{block}" label="Columns Section | Column 4: Choose your Header", header_tag="h3", value="Resource title", export_to_template_context=True %}
+	{% text "about_options_text_four_#{block}" label="Columns Section | Column 4: Place your text here", no_wrap=True, value="This is where the paragraph text will end up going, yahoo!", export_to_template_context=True %}
+	{% cta "about_options_cta_button_four_#{block}" export_to_template_context=True, label="Columns Section | Column 4: Choose Your CTA", no_wrapper=True %}
+
+
+
+	{% if widget_data.about_options_#{block}.value == "2 Column" %}
+	.grid.about-options
+		.grid__item.one-half.hard--ends.soft--sides.text--center>
+			%img{:src => "{{ widget_data.about_options_image_#{block}.src }}",:class => "text--center"}
+			%h3
+				{{ widget_data.about_options_header_#{block}.value }}
+			%p
+				{{ widget_data.about_options_text_#{block}.value }}
+			{{ widget_data.about_options_cta_button_#{block}.embed_code }}
+		
+		.grid__item.one-half.hard--ends.soft--sides.text--center>
+			%img{:src => "{{ widget_data.about_options_image_two_#{block}.src }}"}
+			%h3
+				{{ widget_data.about_options_header_two_#{block}.value }}
+			%p
+				{{ widget_data.about_options_text_two_#{block}.value }}
+			{{ widget_data.about_options_cta_button_two_#{block}.embed_code }}
+
+	{% elif widget_data.about_options_#{block}.value == "3 Column" %}
+	.grid.about-options
+		.grid__item.one-third.hard--ends.soft--sides.text--center>
+			%img{:src => "{{ widget_data.about_options_image_#{block}.src }}"}
+			%h3
+				{{ widget_data.about_options_header_#{block}.value }}
+			%p
+				{{ widget_data.about_options_text_#{block}.value }}
+			{{ widget_data.about_options_cta_button_#{block}.embed_code }}
+		
+		.grid__item.one-third.hard--ends.soft--sides.text--center>
+			%img{:src => "{{ widget_data.about_options_image_two_#{block}.src }}"}
+			%h3
+				{{ widget_data.about_options_header_two_#{block}.value }}
+			%p
+				{{ widget_data.about_options_text_two_#{block}.value }}
+			{{ widget_data.about_options_cta_button_#{block}.embed_code }}
+		
+		.grid__item.one-third.hard--ends.soft--sides.text--center>
+			%img{:src => "{{ widget_data.about_options_image_three_#{block}.src }}"}
+			%h3
+				{{ widget_data.about_options_header_three_#{block}.value }}
+			%p
+				{{ widget_data.about_options_text_three_#{block}.value }}
+			{{ widget_data.about_options_cta_button_three_#{block}.embed_code }}
+
+	{% elif widget_data.about_options_#{block}.value == "4 Column" %}
+	.grid.about-options
+		.grid__item.one-quarter.hard--ends.soft--sides.text--center>
+			%img{:src => "{{ widget_data.about_options_image_#{block}.src }}"}
+			%h3
+				{{ widget_data.about_options_header_#{block}.value }}
+			%p
+				{{ widget_data.about_options_text_#{block}.value }}
+			{{ widget_data.about_options_cta_button_#{block}.embed_code }}
+		
+		.grid__item.one-quarter.hard--ends.soft--sides.text--center>
+			%img{:src => "{{ widget_data.about_options_image_two_#{block}.src }}"}
+			%h3
+				{{ widget_data.about_options_header_two_#{block}.value }}
+			%p
+				{{ widget_data.about_options_text_two_#{block}.value }}
+			{{ widget_data.about_options_cta_button_two_#{block}.embed_code }}
+		
+		.grid__item.one-quarter.hard--ends.soft--sides.text--center>
+			%img{:src => "{{ widget_data.about_options_image_three_#{block}.src }}"}
+			%h3
+				{{ widget_data.about_options_header_three_#{block}.value }}
+			%p
+				{{ widget_data.about_options_text_three_#{block}.value }}
+			{{ widget_data.about_options_cta_button_three_#{block}.embed_code }}
+		
+		.grid__item.one-quarter.hard--ends.soft--sides.text--center>
+			%img{:src => "{{ widget_data.about_options_image_four_#{block}.src }}"}
+			%h3
+				{{ widget_data.about_options_header_four_#{block}.value }}
+			%p
+				{{ widget_data.about_options_text_four_#{block}.value }}
+			{{ widget_data.about_options_cta_button_four_#{block}.embed_code }}
+	{% endif %}

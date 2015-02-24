@@ -1,0 +1,9 @@
+/*Mobile*/
+
+// iPhone Styles - (max-width: 480px)
+@include media-query(palm){
+
+	body{
+		font-size:90%;
+	}
+}

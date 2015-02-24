@@ -1,0 +1,11 @@
+#subscribeSticky>
+	.grid>
+		.grid__item.three-fifths.hard>
+			%h4
+				Any form you want can be placed here.
+			%p
+				You may also write logic into here to display different forms for different pages
+		
+		.grid__item.two-fifths.palm-one-whole.soft--left.hard--right.hard--ends.big-subscribe>
+			.content
+				{% blog_subscribe "blog_subscription" select_blog='default', label='Blog Email Subscription', overrideable=False, no_wrapper=False, response_message='Thanks for Subscribing!', title='Subscribe to Our Blog' %}

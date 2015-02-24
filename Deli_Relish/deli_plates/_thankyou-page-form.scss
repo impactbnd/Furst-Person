@@ -1,0 +1,62 @@
+.tywithform{
+
+	.tycontent{
+		margin-top:$half-spacing;
+
+		.site-header{
+			border-bottom:none!important;
+		}
+
+		.download{
+			border-bottom: solid 1px $brand-light-grey;
+			height: 150px;
+
+			.left{
+			}
+			
+			.right{
+				@include vertical-align;
+
+				a{
+					@extend .mofu-button;
+					@extend .full;
+				}
+			}
+		}
+
+		.consultation{
+			margin-top: $half-spacing;
+			padding:0px!important;
+
+			.right{
+				border-radius: 3px;
+			}
+		}
+	}
+}
+
+// Portable - (max-width: 1026px)
+@include media-query(portable){
+	.tycontent{
+
+		.download{
+			text-align:center;
+			height: auto!important;
+			padding-bottom: 24px;
+
+			.right{
+				position:static!important;
+			}
+		}
+
+		.consultation{
+			.right{
+				margin-top:$half-spacing;
+			}
+		}
+
+		.left,.right{
+			padding:0px!important
+		}
+	}
+}

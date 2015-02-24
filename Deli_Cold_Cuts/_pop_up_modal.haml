@@ -1,0 +1,11 @@
+.subscribe-overlay{style: "display:none;"}
+  #subscribe-pop{style: "display:none;"}
+    .padding
+      .close
+        %span.glyphicon.glyphicon-remove
+      %h3
+        {% text "blog_popup_h3" label="Blog Pop-Up H3", value="Place Header Here" %}
+    .padding-more
+      {% rich_text "blog_popup_main_text" label="Blog Pop-Up Main Text", html="Here is some helper text" %}
+      #subscribe-pop-form
+        {% form "popup_form" %}

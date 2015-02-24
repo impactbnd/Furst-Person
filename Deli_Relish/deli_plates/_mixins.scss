@@ -1,0 +1,8 @@
+@mixin grid {
+	max-width: 73em;
+	margin: 0 auto;
+}
+@mixin btn {
+	background: $bof-color;
+	@include transition(all 0.25s linear);
+}

@@ -1,0 +1,26 @@
+{% choice "cta_layout" label="Large CTA Section: Choose a Layout", choices="Normal CTA Section, CTA Section with Testimonial", export_to_template_context=True %}
+
+{% image "large_cta_bg" export_to_template_context=True, label="Large CTA Section: Choose a background for this section", src="" %}
+{% header "bottom_of_the_funnel_title_#{block}" label="Large CTA Section: Place your header for this section here", header_tag="h3", value="This Is An H3", export_to_template_context=True %}
+{% header "testi_normal_title_#{block}" label="Large CTA Section: Place subheader here (Only if you selected CTA Section with Testimonial)", header_tag="h3", value="This Is An H3", export_to_template_context=True %}
+{% cta "bottom_of_the_funnel_cta_#{block}" label="Large CTA Section: Choose a CTA", no_wrapper=True, export_to_template_context=True %}
+
+{% if widget_data.cta_layout.value == "Normal CTA Section" %}
+.large-cta{:style => "background: {% if widget_data.large_cta_bg.src %}url('{{ widget_data.large_cta_bg.src }}') no-repeat!important; background-size: cover!important;background-position:center!important;{% else %}{% endif %}"}
+  .grid
+    .grid__item.one-whole.text--center.hard>
+      %h3
+        {{ widget_data.bottom_of_the_funnel_title_#{block}.value }}
+      {{ widget_data.bottom_of_the_funnel_cta_#{block}.embed_code }}
+
+{% elif widget_data.cta_layout.value == "CTA Section with Testimonial" %}
+.large-cta.testimonial{:style => "background: {% if widget_data.large_cta_bg.src %}url('{{ widget_data.large_cta_bg.src }}') no-repeat!important; background-size: cover!important;background-position:center!important;{% else %}{% endif %}"}
+  .grid
+    .grid__item.one-whole.text--center.hard>
+      %h4
+        {{ widget_data.bottom_of_the_funnel_title_#{block}.value }}
+      %h3
+        {{ widget_data.testi_normal_title_#{block}.value }}
+      {{ widget_data.bottom_of_the_funnel_cta_#{block}.embed_code }}
+
+{% endif %}

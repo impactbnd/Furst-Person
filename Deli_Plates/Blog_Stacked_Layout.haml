@@ -1,0 +1,188 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+
+!!! 5
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	#{Kernel.includeFile("Cold_Cuts", "_category_options", :block => "one")}
+
+
+	-# This Tells HubSpot To Include The Site Head
+	{% include "custom/page/Deli_Framework/Site_Head.html" %}
+
+	%body.blog-stacked.stacked-community
+		
+		-# This Tells HubSpot To Include The Site Header
+		{% include "custom/page/Deli_Framework/Site_Header.html" %}
+
+		-#{Kernel.includeFile("Cold_Cuts", "_subscribe_sticky", :block => "one")}
+		-#{Kernel.includeFile("Cold_Cuts", "_popup_offer_modal", :block => "one")}
+
+		%center
+			.grid.soft--sides
+				.blog-hero.grid__item.one-half.portable-one-whole.hard
+					%h1
+						{{ content_group.public_title }}
+					%p
+						Subscribe to our blog to get weekly financial tips, tricks, industry trends, and news, delivered straight to your inbox.
+					.subscribe
+						{% blog_subscribe "my_blog_subscribe" label="My Blog Subscribe", custom_form_html=None, no_title=True, title="" %}
+
+				.grid__item.three-quarters.portable-one-whole>
+					.community-topics>
+						%ul
+							{% for topic in topics %}
+							%li{:class => "grid__item whitespace {{ topic_classes[topic] }} {{ topic_width}}"}
+								%a{:href => "{{ topic_url[topic] }}"}
+									{{ topic_text[topic] }}
+				
+							{% endfor %}								
+
+			.main-content.subscribe-waypoint.text--left>
+				{% if is_listing_view %}
+				{# simple_list_page indicates the "blog/all" page, which is a list of links to every blog post #}
+
+				#community-listing.community-listing.hard>
+
+
+					{% for content in contents %}
+					.padding-wrapper.hard.grid__item.one-whole.post-wrapper
+						.post-container
+							.grid.soft--sides
+								%center
+									.grid__item.three-quarters.portable-one-whole.text--left.hard>
+										%a{:href => "{{content.absolute_url}}"}>
+											%div{:class => "post-wrap {% for topic in content.topic_list %}{{ topic.slug }}{% endfor %}", :style => "background-image: url('{{ content.post_list_summary_featured_image|replace('/http://cdn2.hubspot.net/hub/415234','')}}');background-size: cover;background-position:center center"}>
+											
+												.article-information
+													.overview.soft--sides.soft--ends
+														%h2>
+															%a{:href => "{{content.absolute_url}}"}
+																{{ content.name|truncate(120) }}
+
+														.datetime>
+															%p.author.grid__item.three-quarters.palm-one-whole>
+																Posted By {{ content.blog_post_author.display_name }} | {{ content.publish_date_localized }}
+
+															%p.visuallyhidden--palm{:class => "category grid__item one-quarter text--right"}
+
+																%a{:class => "{% for topic in content.topic_list %}{{ topic.name }}{% endfor %}", :href => "{% for topic in content.topic_list %}{{ group.absolute_url }}/topic/{{ topic.slug }}{% endfor %}"}
+																	{% for topic in content.topic_list %}{{ topic.name }}{% endfor %}
+
+														.post-body.visuallyhidden--palm
+															{{ content.post_summary|truncate(800) }}
+													.readmore.visuallyhidden--palm
+														%a{:href => "{{content.absolute_url}}"}
+															Continue Reading						
+					{% endfor %}
+
+					.blog-pagination.one-whole>
+						{%- if last_page_num -%}
+						.previous-posts-link>
+							%a{:href => "{{ blog_page_link(last_page_num) }}"}
+								Previous
+						{%- endif -%}
+						.all-posts-link>
+							%a{:href => "{{ group.absolute_url }}/all"}
+								All posts
+						{%- if next_page_num -%}
+						.next-posts-link>
+							%a.next-posts-link-a{:href => "{{ blog_page_link(next_page_num) }}"}
+								Next
+						{%- endif -%}
+
+					-# Closes "is_listing_view"
+					{% endif %}
+
+	-# This Tells HubSpot To Include The Site Footer
+	{% include "custom/page/Deli_Framework/Site_Footer.html" %}
+
+	%script{:type => "text/javascript", :src => "http://cdn2.hubspot.net/hub/299021/file-1152548840-js/js/ajaxscroll.min.js"}
+
+	:javascript
+		#{Kernel.includeFile("Script_Library", "_popup_offer_modal", :block => "one")}
+		
+		var ias = $.ias({
+			container:  '#community-listing',
+			item:       '.post-wrapper',
+			pagination: '.blog-pagination',
+			next:       '.next-posts-link-a'
+		});
+
+		ias.extension(new IASSpinnerExtension());
+		ias.on('render', function(items) {
+			$(items).each(function(index) {
+
+				if($(this).find('.post-inner').length > 0) {
+
+					if($(this).hasClass('two-thirds')) {
+						console.log('wamp');
+						$(this).toggleClass('two-thirds one-third featured-wrapper lap-one-half');
+
+						$(this).find('.featured').toggleClass('featured');
+
+						$(this).find('.one-twelfth').toggleClass('one-twelfth one-quarter');
+
+						$(this).find('h2').replaceWith(function() {
+							return '<h4 class="soft--sides soft--top hard--bottom">' + $(this).html() + '</h4>';
+						});
+
+						$(this).find('.post-wrap').append($(this).find('.mobile-share-icons').removeClass('one-half'));
+					}
+
+					var mbi = $(this).find('.mobile-share-icons');
+					var data="url="+$(this).find('.mobile-share-icons').attr('rel')+"&apikey=42705988166d6b53252a98c5f16101ec3e391e34"
+					//console.log(data);
+					$.ajax({
+						url: "http://free.sharedcount.com",
+						type: "get",
+						data: data,
+						dataType: "json",
+						success: function(json) {
+							var Facebook = json.Facebook.total_count;
+							var Twitter = json.Twitter;
+							var linkedIN = json.LinkedIn;
+							var GooglePlusOne = json.GooglePlusOne;
+
+							$(mbi).find(".twCount").html(Twitter);
+							$(mbi).find(".inCount").html(linkedIN);
+							$(mbi).find(".fbCount").html(Facebook);
+							$(mbi).find(".gplusCount").html(GooglePlusOne);
+						}
+					});
+				}
+				$(this).addClass('late-load');
+			});
+		});
+		ias.extension(new IASNoneLeftExtension({html: "<div class='end-text' style='margin:auto'><p><em>You Have Reached the End of Our Posts, Please Consider Subscribing If You Haven't Already!</em></p></div>"}));
+
+		pathname = window.location.pathname;
+
+		$(document).ready(function() {
+			#{Kernel.includeFile("Script_Library", "_mobile_share_icons", :block => "one")}
+			-#{Kernel.includeFile("Script_Library", "_subscribe_sticky", :block => "one")}
+			
+			var $select = $('<select class="community-topics-dropdown grid__item " />');
+
+			$('.community-topics ul').find('a').each(function() {
+				var $option = $('<option />');
+				$option.attr('value', $(this).attr('href')).html($(this).html());
+				$select.append($option);
+			});
+
+			$('.community-topics').append($select);
+
+			$('.community-topics-dropdown').prepend("<option value='#' selected='selected'>Choose A Category</option>");
+
+			$select.change(function() {
+				window.location.href = $(this).val();
+			});
+				
+		});
+/
+	[hubspot-metadata]
+	{
+	"category": "blog",
+	"creatable": true,
+	"path": "custom/page/Deli_Framework/Blog_Stacked_Layout"
+	}
+	[end-hubspot-metadata]

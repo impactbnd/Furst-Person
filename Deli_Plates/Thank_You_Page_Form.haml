@@ -1,0 +1,39 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+!!! 5
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	-# This Tells HubSpot To Include The Site Head
+	{% include "custom/page/Deli_Framework/Site_Head.html" %}
+
+	%body.tywithform
+		
+		-# This Tells HubSpot To Include The Site Header
+		{% include "custom/page/Deli_Framework/Site_Header.html" %}
+		
+		.tycontent.grid.soft--sides.soft--ends	
+			.download				
+				.left.grid__item.hard--left.soft--right.two-thirds.portable-one-whole>
+					{% header "page_title" label="Download Section: Choose a Header", header_tag="h2",value="Thanks for Download our eBook!" %}
+					{% header "page_subheader" label="Download Section: Put in some helper text", header_tag="p", value="To redeem your eBook use the button to the right" %}
+
+				.right.grid__item.hard--right.soft--left.one-third.portable-one-whole>
+					{% rich_text "download_button" label="Download Section: Edit your download button",html="Download Now" %}
+
+			.consultation.grid.soft--sides.soft--ends
+				.left.grid__item.hard--left.soft--right.two-thirds.portable-one-whole>
+					{% rich_text "consultation_text" label="Next Steps Section: Choose some content for your BOFU offer", value="Now that you've got our eBook, lets talk." %}
+
+				.right.grid__item.hard--right.soft--left.one-third.portable-one-whole>
+					{% form "bofu_form" label="Next Steps Section: Choose a Form for your BOFU offer" %}
+
+	-# This Tells HubSpot To Include The Site Footer
+	{% include "custom/page/Deli_Framework/Site_Footer.html" %}
+
+/
+	[hubspot-metadata]
+	{
+	"category": "page", 
+	"creatable": true,
+	"path": "custom/page/Deli_Framework/Thank-You-Page-with-Form"
+	}
+	[end-hubspot-metadata]

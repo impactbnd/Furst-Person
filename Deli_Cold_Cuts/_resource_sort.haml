@@ -1,0 +1,9 @@
+{% raw_html "resource_categories" label="Available Categories to choose from",value='<!-- data-filter MUST INCLUDE A PERIOD . BEFORE CATEGORY NAME --><div class="filter" data-filter="all">Show All</div><div class="filter" data-filter=".samplecategory">Sample Category</div>', export_to_template_context=True  %}
+
+{{ widget_data.resource_categories.value }}
+
+%h3.resourceLabel.visuallyhidden--desk
+	Choose a Category
+
+
+%select#resourceSelect.visuallyhidden--desk

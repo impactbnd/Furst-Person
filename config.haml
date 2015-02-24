@@ -1,0 +1,13 @@
+- $relative = "#{relative}"
+:ruby
+	# Define local variables specific to sitesss
+	$pathName = $relative
+
+	# Ruby functions CHEESE
+	def Kernel.includeFile(type,topping,num)
+		if File.exist?("#{$pathName}/Custom_"+type+"/"+topping+".haml")
+			Haml::Engine.new(File.read("#{$pathName}/Custom_"+type+"/"+topping+".haml")).render(Object.new, :block => num) 
+		else 
+			Haml::Engine.new(File.read("#{$pathName}/Deli_"+type+"/"+topping+".haml")).render(Object.new, :block => num)
+		end
+	end

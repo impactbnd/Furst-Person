@@ -1,0 +1,69 @@
+// Services Three Across
+
+.three-across {
+	padding: $full-spacing 0px!important;
+
+	.ta-block{
+
+		.ta-icon{
+			img{
+				max-height: 150px;
+				width: auto!important;
+			}
+		}
+
+		.ta-header{
+			text-align:center;
+		}
+
+		.ta-copy{
+			text-align:center;
+			margin-top:$quarter-spacing;
+
+			.ta-button{
+				margin-top:$quarter-spacing;
+			}
+		}
+	}
+}
+
+
+// iPhone Styles - (max-width: 480px)
+@include media-query(palm){
+
+}
+
+// iPad Styles - (min-width: 481px) and (max-width: 1025px)
+@include media-query(lap){
+	.ta-block{
+
+		.ta-copy{
+			text-align:left!important;
+			margin-top:0px!important;
+
+			.ta-button{
+				padding:0px!important;
+			}
+		}
+	}	
+}
+
+// iPad and Up - (min-width: 481px)
+@include media-query(lap-and-up){
+}
+
+// Portable - (max-width: 1026px)
+@include media-query(portable){
+	
+	.ta-block{
+		margin-top:$half-spacing;
+	}
+}
+
+// Desk - (min-width: 1027px)
+@include media-query(desk){
+}
+
+// Wide Desk - (min-width: 1200px)
+@include media-query(desk-wide){
+}

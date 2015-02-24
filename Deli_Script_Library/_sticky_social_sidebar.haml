@@ -1,0 +1,11 @@
+$('.social-sharing-widget-vertical').waypoint('sticky', {
+offset: 130 // Apply "stuck" when element 130px from top
+});
+
+if($(window).width() > 480 && $(window).width() < 1024) {
+var offSet = '0';
+}
+else {
+var offSet = '-300';
+}
+console.log(offSet);

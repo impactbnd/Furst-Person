@@ -1,0 +1,55 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+!!! 5
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	-# This Tells HubSpot To Include The Site Head
+	{% include "custom/page/Deli_Framework/Site_Head.html" %}
+
+	%body.careers-listing
+		
+		-# This Tells HubSpot To Include The Site Header
+		{% include "custom/page/Deli_Framework/Site_Header.html" %}
+
+		{% image "hero_image_background" label="Choose a Background for your Hero Image", export_to_template_context=True %}
+		.careers-hero{:style => "background: url('{{ widget_data.hero_image_background.src }}')"}
+			
+			%center.grid
+				.grid__item.three-quarters
+				{% header "career_header" label="Choose a Header for this Page", header_tag="h1", value="Your Company Careers" %}
+				{% header "career_subheader" label="Choose a Header for this Page", header_tag="h3", value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida libero quis justo venenatis dapibus." %}
+
+		.careerlistings.grid
+
+			{% if is_listing_view %}
+			{# simple_list_page indicates the "blog/all" page, which is a list of links to every blog post #}
+			
+			{% if not simple_list_page %}
+			{% for content in contents %}
+
+			.career-wrapper
+				.grid__item.three-quarters.lap-one-half.palm-one-whole>
+					%a{:href => "{{content.absolute_url}}"}>
+						%h3
+							{{ content.name }}
+
+				.right.grid__item.one-quarter.lap-one-half.palm-one-whole>
+					%a{:href => "{{content.absolute_url}}"}>
+						%p
+							Posted on {{ content.publish_date_localized }}
+
+			{% endfor %}
+			{%- endif -%}
+
+			{%- endif -%}
+
+		-# This Tells HubSpot To Include The Site Footer
+		{% include "custom/page/Deli_Framework/Site_Footer.html" %}
+
+/
+	[hubspot-metadata]
+	{
+	"category": "blog", 
+	"creatable": true,
+	"path": "custom/page/Deli_Framework/Careers_Listings"
+	}
+	[end-hubspot-metadata]

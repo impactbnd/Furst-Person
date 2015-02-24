@@ -1,0 +1,7 @@
+{% linked_image "bofu_image" export_to_template_context=True, label="Textured CTA Section: Choose a background image (Leave blank if you would just like a colored background)", src="" %}
+
+.textured-bofu-cta{:style => "background: {% if widget_data.bofu_image.src %}url('{{ widget_data.bofu_image.src }}') no-repeat!important; background-size: cover!important;background-position:center!important;{% else %}background:#279DDC;{% endif %}"}
+	.grid
+		{% header "bofu_header" label="Textured CTA Section: Choose a header for this Bofu Section", header_tag="h2", value="Put Your Text Here!" %}
+
+		{% form "textured_bofu_form" label="Textured CTA Section: Choose a form for this section", %}

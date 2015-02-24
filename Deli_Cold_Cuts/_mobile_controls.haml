@@ -1,0 +1,37 @@
+.mobile-social-sharing.grid.visuallyhidden--desk
+	%i.fa.fa-times.close.visuallyhidden--desk
+	%a.grid__item.palm-one-quarter.lap-one-quarter.hard{href: "https://twitter.com/intent/tweet?text={{ page_meta.html_title }}&url={{ content.absolute_url }}", target: "_blank"}>
+		%span.twCount
+		.circle.twitter
+			%i.fa.fa-twitter
+	%a.grid__item.palm-one-quarter.lap-one-quarter.hard{href: "https://www.linkedin.com/shareArticle?url={{ content.absolute_url }}&title={{ page_meta.html_title }}&summary={{ content.meta_description }}", target: "_blank"}>
+		%span.inCount
+		.circle.linkedin
+			%i.fa.fa-linkedin
+	%a.grid__item.palm-one-quarter.lap-one-quarter.hard{href: "https://www.facebook.com/sharer/sharer.php?u={{ content.absolute_url }}", target: "_blank"}>
+		%span.fbCount
+		.circle.facebook
+			%i.fa.fa-facebook
+	%a.grid__item.palm-one-quarter.lap-one-quarter.hard{href: "https://plus.google.com/share?url={{ content.absolute_url }}", target: "_blank"}>
+		%span.gplusCount
+		.circle.google
+			%i.fa.fa-google-plus
+
+.mobile-subscribe{:style => "display:none"}
+	%i.fa.fa-times.close.visuallyhidden--desk
+	Place Form Code Here
+
+.mobile-slide-controls.lap-one-whole.palm-one-whole.visuallyhidden--desk{:style => "display:none;"}
+	.grid.hard>
+		.grid__item.lap-one-third.palm-one-third.hard>
+			%i.fa.fa-arrow-left
+			%a.share-slide{:href => "/blog"}
+				&nbsp;Blog
+		.grid__item.lap-one-third.palm-one-third.hard>
+			%i.fa.fa-share-alt-square
+			%a.share-slide{:href => "#"}
+				&nbsp;Share
+		.grid__item.lap-one-third.palm-one-third.hard>
+			%i.fa.fa-envelope-square
+			%a.subscribe-slide{:href => "#"}
+				&nbsp;Subscribe

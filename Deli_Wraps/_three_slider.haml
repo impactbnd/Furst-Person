@@ -1,0 +1,50 @@
+{% rich_text "benefits_text_1" label="Slide 1: Place Content for slide here", html="<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet. Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet</p>", export_to_template_context=True  %}
+		
+{% rich_text "benefits_text_2" label="Slide 2: Place Content for slide here", html="<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet</p>", export_to_template_context=True  %}
+
+{% rich_text "benefits_text_3" label="Slide 3: Place Content for slide here", html="<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet.Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor.</p>", export_to_template_context=True  %}
+
+{% rich_text "benefits_text_4" label="Slide 4: Place Content for slide here", html="<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet.</p>", export_to_template_context=True  %}
+
+.grid__item.slideshows.one-whole.hard--sides{:style => "text-align:center"}
+	#slideshow-left.slideshow.grid__item.one-third.visuallyhidden--portable.hard>
+		%div
+			{{ widget_data.benefits_text_1.html }}
+		%div
+			{{ widget_data.benefits_text_2.html }}
+		%div
+			{{ widget_data.benefits_text_3.html }}
+		%div
+			{{ widget_data.benefits_text_4.html }}
+
+	#slideshow-center.slideshow.grid__item.one-third.portable-one-whole.hard>
+		%h4
+			BENEFITS
+		%div
+			{{ widget_data.benefits_text_2.html }}
+		%div
+			{{ widget_data.benefits_text_3.html }}
+		%div
+			{{ widget_data.benefits_text_4.html }}
+		%div
+			{{ widget_data.benefits_text_1.html }}
+
+		%a#prev{:href => "#"}
+			%i.fa.fa-chevron-left
+		%a#next{:href => "#"}
+			%i.fa.fa-chevron-right
+	
+
+	#slideshow-right.slideshow.grid__item.one-third.visuallyhidden--portable.hard>
+		%div
+			{{ widget_data.benefits_text_3.html }}
+		%div
+			{{ widget_data.benefits_text_4.html }}
+		%div
+			{{ widget_data.benefits_text_1.html }}
+		%div
+			{{ widget_data.benefits_text_2.html }}
+
+	-#.grid
+		-#.grid__item.one-whole.slide-controls
+

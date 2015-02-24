@@ -1,0 +1,259 @@
+/*** ABOUT FURSTPERSON ***/
+.full-width-section {
+	&.full-width-section-about {
+		padding: 4.5em 0 0 0;
+		width: 100%!important;
+		height: 270px;
+		overflow: hidden;
+
+		@include media-query(palm) {
+			height: auto;
+
+			.row-fluid-wrapper {
+				padding-left: 0px!important;
+				padding-right: 0px!important;
+			}
+		}
+	}
+
+	&.full-width-section-about-bottom {
+		padding: 0 0 4.5em 0;
+	}
+}
+
+.timeline-section {
+
+	.hs_cos_wrapper_type_custom_widget {
+		height: 470px;
+		overflow: hidden;
+
+		@include media-query(palm) {
+			height: auto;
+		}
+	}
+
+	#timeitem2 {
+		.timeline-image {
+			position: relative;
+		}
+		img {
+			position: absolute;
+			bottom: 0;				
+		}
+	}
+
+	.timeline-item {
+		display: inline-block;
+		height: 470px;
+		position: relative;
+
+		@include media-query(palm) {
+			padding-bottom: 5%!important;
+			height: auto;
+		}
+
+		.timeline-image, .timeline-details {
+			height: 470px;
+			float: left;
+
+			@include media-query(palm) {
+				height: auto;
+			}
+		}
+
+		ul {
+			list-style: none;
+
+			li {
+				position: relative;
+
+				&:before {
+					background: url('http://cdn2.hubspot.net/hub/176608/file-2408504325-png/template_images/checkmark-green.png') no-repeat 0 0;
+					width: 20px;
+					display: block;
+					content: "";
+					position: absolute;
+					top: 5px;
+					left: -26px;
+					background-size: 20px 20px;
+					height: 20px;
+				}
+			}
+		}
+    }
+
+	.timeline-details-container {
+		position: relative;
+		-webkit-transition: all 0.8s ease-in-out;
+		-moz-transition: all 0.8s ease-in-out;
+		transition: all 0.8s ease-in-out;
+		padding: 5%;
+	}
+
+	.timeline-item-left {
+		background: #cfe0ec; 
+
+		.timeline-details {
+			width: 49.9%;
+
+			.timeline-details-container {
+				right: -150%;	
+
+				&.fill {
+					right: 0%;
+				}
+			}
+
+			@include media-query(palm) {
+				width: 100%;
+			}
+		}
+
+		.timeline-image {
+			width: 50%;
+			border-right: 1px solid #aac1d2;
+
+			@include media-query(palm) {
+				width: 100%;
+				border-right: none;
+			}
+		}
+	}
+
+	.timeline-item-right {
+		background: #dae8f2;
+
+		.timeline-details {
+			width: 50%;
+			float: left;
+			border-right: 1px solid #aac1d2;
+
+			.timeline-details-container {
+				left: -150%;	
+
+				&.fill {
+					left: 0%;
+				}
+			}
+
+			@include media-query(palm) {
+				width: 100%;
+				float: none;
+				border-right: none;
+			}
+		}
+
+		.timeline-image {
+			float: right;
+			width: 49.9%;
+
+			@include media-query(palm) {
+				width: 100%;
+				float: none;
+			}
+		}
+	}
+}
+
+
+@media only screen and (min-width: 980px) and (max-width: 1155px) {
+	#hs_cos_wrapper_widget_2410294652 {
+		height: 500px;
+	}
+}
+
+#timeitem1 {
+
+	@media only screen and (min-width: 980px) and (max-width: 1155px) {
+		.hs_cos_wrapper_type_custom_widget {
+			height: 500px;
+		}
+
+		.timeline-item {
+			height: 500px;
+		}
+
+		.timeline-image, .timeline-details {
+			height: 500px;
+		}
+	}
+}
+
+@include media-query(lap-and-up) {
+	.timeline-dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: #243d5c;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		position: absolute;
+		top: 50%;
+	}
+
+	.top-timeline-dot {
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: #243d5c;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		position: absolute;
+		top: 53px;
+	}
+
+	.bottom-timeline-dot {
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: #243d5c;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		position: absolute;
+		bottom: -100px;
+	}
+}
+
+.top-timeline {
+	position: relative;
+	margin-top: 20px;
+
+	@include media-query(lap-and-up) {
+		.left-spacer {
+			height: 100px;
+			border-right: 1px solid #aac1d2;
+			display: inline-block;
+			width: 50%;
+			float: left;
+		}
+	}
+}
+
+.bottom-timeline {
+	position: relative;
+
+	@include media-query(lap-and-up) {
+		.left-spacer {
+			height: 100px;
+			border-right: 1px solid #aac1d2;
+			display: inline-block;
+			width: 50%;
+			float: left;
+		}
+	}
+
+	.span12 {
+		margin-left: 0px!important;
+	}
+}
+
+.cta {
+    background-size: cover;
+}
+

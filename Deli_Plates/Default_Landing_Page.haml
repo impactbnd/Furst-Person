@@ -1,0 +1,33 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+!!! 5
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	-# This Tells HubSpot To Include The Site Head
+	{% include "custom/page/Deli_Framework/Site_Head.html" %}
+
+	%body{:class => "default-landing-page {{ builtin_body_classes }}"}
+
+		{% include "custom/page/Deli_Framework/Landing_Page_Site_Header.html" %}
+
+		-# These are the includes for the hero section
+		= Haml::Engine.new(File.read("/Users/impactbnd/Sites/impact-framework/Deli_Wraps/_subpage_hero.haml")).render(Object.new, :block => "one")
+		
+		.grid.content		
+			.left.grid__item.two-thirds.palm-one-whole.hard--left.soft--right>
+				-# This is a Rich Text Block with Fake Content
+				{% rich_text "landing_page_rich_text" label="Page Content", html="<h2>An Example of a H2</h2><h3>An example of an H3</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit velit sed eros laoreet varius. Aenean vel accumsan ligula.</p>" %}
+
+			.right.grid__item.one-third.palm-one-whole>
+				{% form "Landing_Page_Form" %}
+
+	-# This Tells HubSpot To Include The Site Footer
+	{% include "custom/page/Deli_Framework/Site_Footer.html" %}
+
+/
+	[hubspot-metadata]
+	{
+	"category": "page", 
+	"creatable": true,
+	"path": "custom/page/Deli_Framework/Default_Landing_Page"
+	}
+	[end-hubspot-metadata]

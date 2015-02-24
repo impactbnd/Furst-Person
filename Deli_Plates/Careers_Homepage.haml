@@ -1,0 +1,97 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+!!! 5
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	-# This Tells HubSpot To Include The Site Head
+	{% include "custom/page/Deli_Framework/Site_Head.html" %}
+
+
+	%body.careers
+		
+		-# This Tells HubSpot To Include The Site Header
+		{% include "custom/page/Deli_Framework/Site_Header.html" %}
+
+		{% image "hero_image_background" label="Choose a Background for your Hero Image", export_to_template_context=True %}
+		.careers-hero{:style => "background: url('{{ widget_data.hero_image_background.src }}')"}
+			
+			%center.grid
+				.grid__item.three-quarters
+				{% header "career_header" label="Choose a Header for this Page", header_tag="h1", value="Company Name Careers" %}
+				{% header "career_subheader" label="Choose a Header for this Page", header_tag="h3", value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida libero quis justo venenatis dapibus." %}
+
+		.choosepath
+			.grid
+				.grid__item.one-whole.text--center
+					{% header "path_header" label="Choose a Header for the Career Paths Section", header_tag="h2", value="Choose Your Path" %}
+
+				.category-wrapper.grid__item.one-third.palm-one-whole.lap-one-half.soft--sides.soft--ends>
+					= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_career_category.haml')).render(Object.new, :block => "1")
+
+				.category-wrapper.grid__item.one-third.palm-one-whole.lap-one-half.soft--sides.soft--ends>
+					= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_career_category.haml')).render(Object.new, :block => "2")
+
+				.category-wrapper.grid__item.one-third.palm-one-whole.lap-one-half.soft--sides.soft--ends>
+					= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_career_category.haml')).render(Object.new, :block => "3")
+
+				.category-wrapper.grid__item.one-third.palm-one-whole.lap-one-half.soft--sides.soft--ends>
+					= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_career_category.haml')).render(Object.new, :block => "4")
+
+				.category-wrapper.grid__item.one-third.palm-one-whole.lap-one-half.soft--sides.soft--ends>
+					= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_career_category.haml')).render(Object.new, :block => "5")
+
+				.category-wrapper.grid__item.one-third.palm-one-whole.lap-one-half.soft--sides.soft--ends>
+					= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_career_category.haml')).render(Object.new, :block => "6")
+
+		.perks
+			.grid
+				.grid__item.one-whole.text--center
+					{% header "perks_header" label="Choose a Header for the Benefits & Perks Section", header_tag="h2", value="Why Work for Us?" %}
+
+		= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Wraps/_three_slider.haml')).render(Object.new, :block => "6")
+		
+		= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_pop_up_modal.haml')).render(Object.new, :block => "1")
+		
+		-# This Tells HubSpot To Include The Site Footer
+		{% include "custom/page/Deli_Framework/Site_Footer.html" %}
+
+:javascript
+	$(document).ready(function() {
+		$('#slideshow-left').cycle({ 
+			fx: 'scrollHorz',
+			slides: '> div',
+			paused: true
+		});
+
+		$('#slideshow-center').cycle({ 
+			fx: 'scrollHorz',
+			slides: '> div',
+			next: '#next',
+			prev: '#prev',
+			paused: true
+		});
+
+		$('#slideshow-right').cycle({ 
+			fx: 'scrollHorz',
+			slides: '> div',
+			paused: true
+		});
+
+		//advanced logic for sliders
+		$( '#slideshow-center' ).on( 'cycle-next', function(event, optionHash) {
+			console.log('next triggered');
+			$('#slideshow-left').cycle('next');
+			$('#slideshow-right').cycle('next');
+		}).on( 'cycle-prev', function(event, optionHash) {
+			$('#slideshow-left').cycle('prev');
+			$('#slideshow-right').cycle('prev');
+		});
+	});
+
+/
+	[hubspot-metadata]
+	{
+	"category": "page", 
+	"creatable": true,
+	"path": "custom/page/Deli_Framework/Careers_Homepage"
+	}
+	[end-hubspot-metadata]

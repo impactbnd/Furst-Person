@@ -1,0 +1,138 @@
+.contact{
+	.top-contact {
+		position: absolute;
+		top: 50px;
+		color: #fff;
+		background-repeat: no-repeat!important;
+		background-position: 18px center!important;
+		padding: 10px 30px 10px 55px;
+		-webkit-transition: all 0.3s ease-in-out;
+		-moz-transition: all 0.3s ease-in-out;
+		-ms-transition: all 0.3s ease-in-out;
+		-o-transition: all 0.3s ease-in-out;
+		transition: all 0.3s ease-in-out;
+		@media(max-width:480px){
+			position: relative;
+			top: -50px;
+			color: #fff;
+			max-width: 200px;
+			display: block!important;
+			margin: 0 auto!important;
+			float: none!important;
+			background-repeat: no-repeat !important;
+			background-position: 18px center !important;
+			padding: 10px 30px 10px 55px;
+			-webkit-transition: all 0.3s ease-in-out;
+			-moz-transition: all 0.3s ease-in-out;
+			-ms-transition: all 0.3s ease-in-out;
+			-o-transition: all 0.3s ease-in-out;
+			transition: all 0.3s ease-in-out;
+		}
+		:hover{
+			background-color: $brand-secondary-color;
+			opacity: 1;
+		}
+	}
+	.subpage-hero {
+		padding: 145px 0px;
+
+	}
+	.page-container{
+		padding:65px 0px;
+		h2{
+			font-size:$h2-size;
+			font-family: $brand-header;
+			color:$brand-primary-color;
+			margin-bottom: -10px;
+		}
+		h3{
+			font-size:$h3-size;
+			font-family: $brand-header;
+			color:$brand-secondary-color;
+			margin-bottom: 10px;
+			margin-top: 15px;
+		}
+		.contact-right{
+			@extend .palm-one-whole;
+			@extend .lap-one-whole;
+			@media(max-width:480px){
+				padding:0px!important;
+			}
+			.google-map {
+				overflow: hidden;
+				margin-top: 30px;
+			}
+			.social{
+				a{
+					margin:0px 5px;
+					.fa {
+						font-size:$h3-size;
+						color:$brand-primary-color;
+						margin-top: 5px;
+					}
+				}
+			}
+		}
+		.contact-left{
+			@extend .palm-one-whole;
+			@extend .lap-one-whole;
+			@media(max-width:480px){
+				padding:0px!important;
+			}
+			#hs_cos_wrapper_my_form_title{
+				display:none;
+			}
+			.hs_cos_wrapper_type_form{
+				border:0px;
+				form{
+					padding: 15px 0px;
+					.hs-form-field {
+						margin-bottom: 20px;
+						display: inline-block;
+						width: 47%;
+						margin-right: 2%;
+						vertical-align: top;			
+					}
+					.hs_radio.field.hs-form-field {
+						width: 100%!important;
+						margin-bottom: 0px;
+					}
+					 ul.inputs-list {
+						display: inline-block;
+						margin-left: 0px;
+						width: 100%;
+						list-style: none;
+					}
+					li.hs-form-radio {
+						display: inline-block;
+						width: 33.333%;
+						height: auto;
+						padding: 0px;
+					}
+					.hs-form-checkbox label input {
+						float: left;
+						width: 25px;
+						position: relative;
+						top: 5px;
+						height: inherit !important;
+					}
+
+					.hs_checklist.field.hs-form-field {
+						width: 100%!important;
+						margin-bottom: 0px;
+					}
+
+					.hs_checklist ul li {
+						display: inline-block;
+						width: 33.333%;
+						height: auto;
+						padding: 0px;
+					}
+					.hs_message.field.hs-form-field {
+						width: 100%!important;
+					}
+				}	
+			}
+		}
+	}
+}

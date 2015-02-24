@@ -1,0 +1,40 @@
+$(".sub-button").click(function(event) {
+event.preventDefault();
+if($(".blog-subscribe-portable").css("display") == "none") {
+$(".blog-subscribe-portable").slideDown(500);
+}
+else {
+$(".blog-subscribe-portable").slideUp(500);
+}
+});
+
+setTimeout(function() {
+if($(".hs-input[name='already_subscribed_to_blog']").val() == "Yes") {
+$(".sub-button").hide();
+$(".blog-subscribe-portable").hide();
+$(".blog-subscribe-portable").hide();
+}
+else {
+if($(window).width() < 1024) {
+$(".sub-button").show();
+}
+$(".blog-subscribe-portable").show();
+console.log('option #2');
+}
+}, 400);
+
+$(window).resize(function() {
+if($(window).width() < 1024) {
+$(".blog-subscribe-portable").append($(".big-subscribe").find(".content"));	
+}
+else if ($(window).width() > 1023) {
+$(".big-subscribe").append($(".blog-subscribe-portable").find(".content"));
+}
+});
+
+setTimeout(function() {
+if($(window).width() < 1024) {
+$(".blog-subscribe-portable").append($(".big-subscribe").find(".content"));
+}
+
+}, 400);

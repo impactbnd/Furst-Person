@@ -1,0 +1,57 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+!!! 5
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	-# This Tells HubSpot To Include The Site Head
+	{% include "custom/page/Deli_Framework/Site_Head.html" %}
+
+	%body.subpage.customer-stories
+
+		-# This Tells HubSpot To Include The Site Header
+		{% include "custom/page/Deli_Framework/Site_Header.html" %}
+
+		= Haml::Engine.new(File.read('/Users/impactbnd/Sites/LaborSync/blocks/_subpage_hero.haml')).render(Object.new, :block => "one")
+
+		.featuredstory.text--center
+			.grid
+				.featured-logo
+					{% text "story_link_featured" label="Featured Story: What site should this story link to?", export_to_template_context=True %}
+					%a{:href => "{{ widget_data.story_link_featured.value }}", :target => "_blank"}
+						{% image "featured_logo" label="Featured Story: Choose a logo for the featured Customer Story", src="http://cdn2.hubspot.net/hub/298890/file-998941801-png/Assets/filler-image.png" %}
+
+				%h2
+					{% text "featured_story" label="Featured Story: Put in the testimonial", value="My executive security team here at Honeywell are using Labor Sync. It has become an everyday part of the operations here and has been a very big help. I look forward to seeing Labor sync as it continues to evolve." %}
+
+				{% image "featured_profpic" label="Featured Story: Choose a picture for the person being quoted", export_to_template_context=True %}
+				.featured-person{:style => "background:{% if widget_data.featured_profpic.src %}url('{{ widget_data.featured_profpic.src }}') no-repeat!important; background-size: cover!important;background-position:center!important;{% else %}#e1e1e1 url('http://cdn2.hubspot.net/hub/341705/file-1327191602-png/assets/Customer_Stories_Logos/profile-default.png') no-repeat!important;background-position:center!important;{% endif %}"}
+
+				%p
+					{% text "featured_person" label="Featured Story: Who said this quote?", value="Mr. Michael Furey" %}
+		.grid
+			.grid__item.one-third.lap-one-half.palm-one-whole.hard>
+				= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_customer_testimonial_story.haml')).render(Object.new, :customer => "Company1")
+			.grid__item.one-third.lap-one-half.palm-one-whole.hard>
+				= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_customer_testimonial_story.haml')).render(Object.new, :customer => "Company2")
+			.grid__item.one-third.lap-one-half.palm-one-whole.hard>
+				= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_customer_testimonial_story.haml')).render(Object.new, :customer => "Company3")
+
+			.grid__item.one-third.lap-one-half.palm-one-whole.hard>
+				= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_customer_testimonial_story.haml')).render(Object.new, :customer => "Company4")
+			.grid__item.one-third.lap-one-half.palm-one-whole.hard>
+				= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_customer_testimonial_story.haml')).render(Object.new, :customer => "Company5")
+			.grid__item.one-third.lap-one-half.palm-one-whole.hard>
+				= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_customer_testimonial_story.haml')).render(Object.new, :customer => "Company6")
+
+		= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Wraps/_textured_bofu_cta.haml')).render(Object.new, :block => "one")
+
+	-# This Tells HubSpot To Include The Site Footer
+	{% include "custom/page/Deli_Framework/Site_Footer.html" %}
+
+/
+	[hubspot-metadata]
+	{
+	"category": "page",
+	"creatable": true,
+	"path": "custom/page/Deli_Framework/Customer_Testimonials_Page"
+	}
+	[end-hubspot-metadata]

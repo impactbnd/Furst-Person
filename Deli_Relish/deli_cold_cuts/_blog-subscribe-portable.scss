@@ -1,0 +1,60 @@
+.sub-button {
+	display:none;
+	background: none repeat scroll 0% 0% $brand-secondary-color;
+	border-radius: 2px;
+	color: #FFF !important;
+	font-weight: 600;
+	text-align: center;
+	padding: 10px;
+
+	@include media-query(portable){
+		display:block;
+		margin-bottom:24px;
+	}
+}
+
+.blog-subscribe-portable {
+    padding-left: 30px;
+	padding-right: 32px !important;
+    display:none;
+
+   	.content {
+   		background:#ececec !important;
+    	border:solid 1px #ccc;
+    	padding:12px;
+
+   		h3 {
+   			display:none;
+   		}
+
+    	h4 {
+    		text-align:center;
+    	}
+
+    	.hs_blog_default_blog_subscription {
+    		margin-top:14px;
+    		text-align:left;
+
+    		.input {
+    			margin-top:-12px;
+    		}
+    	}
+
+    	.hs_email {
+    		margin-top:-16px;
+    	}
+
+    	ul {
+    		list-style-type:none;
+    		margin-left:0px !important;
+
+    		li {
+    			float:left;
+    			width:50%;
+    			padding-left:20px;
+
+
+    		}
+    	}
+    }
+}

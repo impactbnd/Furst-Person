@@ -1,0 +1,11 @@
+-# Services Three Across - Three column block with a full width header. 
+
+.three-across
+	.grid
+		.ta-header.hard.grid__item.one-whole.text--center
+			{% header "persona_section_header_#{block}" label="Three Column Section Header", header_tag="h2",no_wrapper=True, value="Kick Ass Header Goes Here" %}
+		
+		.three-across-content.hard.grid__item.one-whole
+			= Haml::Engine.new(File.read('/Users/redpdt42/Sites/impact-framework/Deli_Cold_Cuts/_three_across_cold_cut.haml')).render(Object.new, :block => "1")
+			= Haml::Engine.new(File.read('/Users/redpdt42/Sites/impact-framework/Deli_Cold_Cuts/_three_across_cold_cut.haml')).render(Object.new, :block => "2")
+			= Haml::Engine.new(File.read('/Users/redpdt42/Sites/impact-framework/Deli_Cold_Cuts/_three_across_cold_cut.haml')).render(Object.new, :block => "3")

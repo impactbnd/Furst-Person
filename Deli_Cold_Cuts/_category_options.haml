@@ -1,0 +1,20 @@
+// Set Your Blog's category options here
+
+- $categoryOne = "Sample Category"
+- $categoryOneUrl = "sample-category"
+
+- $categoryTwo = "Sample Category"
+- $categoryTwoUrl = "sample-category"
+
+- $categoryThree = "Sample Category"
+- $categoryThreeUrl = "sample-category"
+
+{% set topics = ["category-one","category-two","category-three"] %}
+
+{% set topic_text = {"category-one":"#{$categoryOne}", "category-two":"#{$categoryTwo}", "category-three":"#{$categoryThree}"} %}
+
+{% set topic_url = {"category-one":"/blog/topic/#{$categoryOneUrl}", "category-two":"/blog/topic/#{$categoryTwoUrl}", "category-three":"/blog/topic/#{$categoryThreeUrl}"} %}
+
+{% set topic_width = "one-third" %}
+
+{% set topic_classes = {"category-one":"#{$categoryOne}", "category-two":"#{$categoryTwo}", "category-three":"#{$categoryThree}"} %}

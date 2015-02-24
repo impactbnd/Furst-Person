@@ -1,0 +1,14 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+!!! 5
+%header.landingheader
+    %div.logo
+        {% logo "logo" %}
+
+/
+    [hubspot-metadata]
+    {
+    "category": "include", 
+    "creatable": false,
+    "path": "custom/page/Deli_Framework/Landing_Page_Site_Header.html"
+    }
+    [end-hubspot-metadata]

@@ -1,0 +1,184 @@
+.menu-button {
+    display:none;
+    float:right;
+    font-size:1.5em;
+    cursor: pointer;
+    font-size:1.2em;
+    text-align:right;
+    width:100px;
+
+    i {
+        color:$brand-color !important;
+    }
+}
+/*
+.menu-open {
+    position:absolute;
+    right:280px;
+    overflow:hidden;
+    -webkit-transition: all .3s ease,-webkit-transform .3s ease;
+    -moz-transition: all .3s ease,-moz-transform .3s ease;
+    -o-transition: all .3s ease,transform .3s ease;
+    -ms-transition: all .3s ease,transform .3s ease;
+    transition: all .3s ease,transform .3s ease;
+}
+.menu-closed {
+    right:0px;
+    overflow:hidden;
+    -webkit-transition: all .3s ease,-webkit-transform .3s ease;
+    -moz-transition: all .3s ease,-moz-transform .3s ease;
+    -o-transition: all .3s ease,transform .3s ease;
+    -ms-transition: all .3s ease,transform .3s ease;
+    transition: all .3s ease,transform .3s ease;
+} */
+.menu-holder {
+    position:fixed;
+    overflow:auto;
+    height:100%;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    right:-280px;
+    width:280px;
+    z-index:9999 !important;
+    color:#fff;
+    background: $brand-color;
+    font-size:1.15em;
+    text-align:left;
+    -webkit-transition: left 250ms ease 0s, right 250ms ease 0s;
+    -moz-transition: left 250ms ease 0s, right 250ms ease 0s;
+    -o-transition: left 250ms ease 0s, right 250ms ease 0s;
+    -ms-transition: left 250ms ease 0s, right 250ms ease 0s;
+    transition: left 250ms ease 0s, right 250ms ease 0s;
+
+    img {
+        max-width:60%;
+        margin-left:10px;
+        margin-top:10px;
+    }
+
+    li {
+        border-bottom:solid 1px #16395c;
+
+        &:first-child {
+            border-top:solid 1px #16395c;
+        }
+
+        &.hs-menu-depth-1 {
+            text-transform:uppercase;
+            font-weight:500;
+
+            .hs-menu-children-wrapper {
+                li {
+                    background:#16395c;
+                    font-weight:200 !important;
+                    border-bottom:solid 1px $brand-color;
+
+                    a {
+                        padding-left:30px !important;
+                    }
+
+                    &:first-child {
+                        border-top:solid 2px $brand-color;
+                    }
+                }
+            }
+        }
+        &.hs-menu-depth-2 {
+            text-transform:none;
+            font-weight:normal;
+        }
+
+        a {
+            padding-left:15px !important;
+
+            &:hover {
+                color:#fff !important;
+            }
+        }
+        i {
+            padding:13px;            
+            float:right;
+            width: 40px;
+            text-align: right;
+            cursor: pointer;
+            z-index: 9999;
+            position: relative;
+        }
+    }
+
+    i {
+        margin-right:4px;
+    }
+
+    &.show {
+        right:0px;
+        transition: left 250ms ease 0s, right 250ms ease 0s;
+    }
+
+    .liHasChild {
+        a:first-child {
+            //background:#fff;
+        }
+    }
+
+    a {
+        display:block;
+        padding:10px;
+        color:#fff !important;
+
+        &:hover {
+            background:$tofu-color !important;
+            color:#fff !important;
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        margin:0px !important;
+
+        .hs-menu-children-wrapper {
+
+            li {
+                a {
+
+                    &:hover {
+                        border-top:0px !important;
+                        border-bottom:0px !important;
+                        color:#fff !important;
+                    }
+                }
+            }
+        }
+    }
+}
+.menu-overlay {
+    background: rgba(0,0,0, 0.7);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 3000;
+    height: 100%;
+    width: 100%;
+}
+.menu-overlay{
+    z-index:6000!important;
+}
+
+@include media-query(lap){
+    .menu-button {
+        display: block !important;
+    }
+}
+@include media-query(palm){
+     .menu-button {
+        display: block !important;
+    }
+}
+@include media-query(portable){
+    .menu {
+        display:none;
+    }
+}

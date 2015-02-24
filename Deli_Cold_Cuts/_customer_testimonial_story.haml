@@ -1,0 +1,14 @@
+%div{:class => "#{customer} story-wrapper text--center soft--sides"}>
+	.customer-logo
+		{% text "story_link_#{customer}" label="#{customer} Testimonial: What site should this story link to?", export_to_template_context=True %}
+		%a{:href => "{{ widget_data.story_link_#{customer}.value }}", :target => "_blank"}
+			{% image "logo_#{customer}" label="#{customer} Testimonial: Choose a logo for the Customer Story", src="http://cdn2.hubspot.net/hub/298890/file-998941801-png/Assets/filler-image.png" %}
+
+	%p
+		{% text "story_#{customer}" label="#{customer} Testimonial: Put in the testimonial", value="My executive security team here at Honeywell are using Labor Sync. It has become an everyday part of the operations here and has been a very big help. I look forward to seeing Labor sync as it continues to evolve." %}
+
+	{% image "profpic_#{customer}" label="#{customer} Testimonial: Choose a picture for the person being quoted", export_to_template_context=True %}
+	.profpic{:style => "background:{% if widget_data.profpic_#{customer}.src %}url('{{ widget_data.profpic_#{customer}.src }}') no-repeat!important; background-size: cover!important;background-position:center!important;{% else %}#e1e1e1 url('http://cdn2.hubspot.net/hub/341705/file-1327191602-png/assets/Customer_Stories_Logos/profile-default.png') no-repeat!important;background-position:center!important;{% endif %}"}
+
+	%h5
+		{% text "person_#{customer}" label="#{customer} Testimonial: Who said this quote?", value="Mr. Michael Furey" %}

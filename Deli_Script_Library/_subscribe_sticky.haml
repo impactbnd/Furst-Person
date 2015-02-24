@@ -1,0 +1,17 @@
+$(document).ready(function() {
+setTimeout(function() {
+if($(".hs-input[name='already_subscribed_to_blog']").val() != "Yes") {
+$('.subscribe-waypoint').waypoint({
+stuckClass: 'stucks',
+handler: function(dir) {
+if(dir == 'down') {
+$("#subscribeSticky").addClass('show');
+}
+else {
+$("#subscribeSticky").removeClass('show');
+}
+}
+});
+}
+}, 500);
+});

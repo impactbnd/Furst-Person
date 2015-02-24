@@ -1,0 +1,22 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+
+%header
+    .above-nav.grid.soft--sides.soft--ends
+        .grid__item.logo.one-half.palm-one-half.lap-one-half.hard>
+            {% logo "logo" %}
+        .grid__item.menu-button.palm-five-twelfths.lap-one-eighth.hard>
+            %i.fa.fa-bars
+            Menu
+            
+    .menu
+        .grid.soft--sides
+            {% menu "header_menu" label="header_menu", flow="horizontal", flouts="true", max_levels=3, site_map_name="default" %}
+
+/
+    [hubspot-metadata]
+    {
+    "category": "include", 
+    "creatable": false,
+    "path": "custom/page/Deli_Framework/Site_Header.html"
+    }
+    [end-hubspot-metadata]

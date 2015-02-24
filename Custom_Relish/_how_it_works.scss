@@ -1,0 +1,142 @@
+.how-it-works {
+
+	h3 {
+		text-align: center;
+	}
+
+	.why-us-item {
+		display: inline-block;
+		padding: 30px 15px;
+		position: relative;
+
+		.span3 {
+			text-align: right;
+
+			@media (max-width: 767px) {
+				text-align: center;
+			}
+		}
+
+		&.fill {
+			background: #cadae6;
+			-webkit-transition: all 0.5s linear;
+			-moz-transition: all 0.5s linear;
+			transition: all 0.5s linear;
+		}
+	}
+
+	.arrow-down {
+		width: 0; 
+		height: 0; 
+		border-left: 20px solid transparent;
+		border-right: 20px solid transparent;
+		border-top: 20px solid #cadae6;
+		position: absolute;
+		bottom: -20px;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		opacity: 0;
+		-webkit-transition: all 0.5s linear;
+		-moz-transition: all 0.5s linear;
+		transition: all 0.5s linear;
+
+		&.visible {
+			opacity: 1;
+		}
+	}
+
+	#step0 {
+		background: #cadae6;
+
+		.arrow-down {
+			opacity: 1;
+		}
+	}
+}
+
+.lower-how-it-works {
+
+	h3 {
+		text-align: center;
+	}
+}
+
+.step-process-container {
+	padding: 0 18px!important;
+	text-align: center;
+	margin-left: -5px;
+}
+
+.talent-measure-container {
+	text-align: center;
+	margin-left: -5px;
+}
+
+.measure-talent-overall {
+	margin-bottom: 15px;
+}
+
+.lower-cta-form {
+
+	#input-holder {
+		background: rgba(0,0,0,.3);
+		padding: 30px 24px 24px 24px!important;
+		margin-top: $half-spacing;
+	}
+
+	.hs-form {
+		margin-bottom: 0px!important;
+	}
+
+	.hs-form-field {
+		width: 17%;
+		display: inline-block;
+		padding-right: 30px;
+		margin-bottom: 0px!important;
+
+		@media (max-width: 1159px) {
+			width: 50%!important;
+		}
+
+		@media (max-width: 481px) {
+			width: 100%!important;
+			padding-right: 0px!important;
+		}
+
+		label {
+			display: none;
+		}
+
+		input {
+			border-radius: 4px;
+		}
+
+		&:last-child {
+			padding-right: 0px;
+
+			@media (max-width: 1159px) {
+				padding-right: 30px;
+			}
+
+			@media (max-width: 481px) {
+				padding-right: 0px;
+			}
+		}
+
+		select {
+			height: 46px;
+			margin-top: -10px;
+
+			@media (max-width: 1159px) {
+				width: 100%;
+				margin-top: 0px;
+			}
+		}
+	}
+
+	.hs-button {
+		width: 200px;
+	}
+}

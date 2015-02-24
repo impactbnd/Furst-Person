@@ -1,0 +1,125 @@
+.four-oh-four {
+		
+	.page-container {
+		margin: 4em auto;
+		background: transparent;
+		
+		.page-wrap {	
+			border: solid 1px $brand-light-grey;
+			border-radius: 3px;
+
+			.error {
+				display: block;
+				margin: 0 auto;
+				text-align: center;
+
+				.error-text {
+					display: inline-block;
+					vertical-align: middle;
+
+					h1 {
+						font-size: 7em;
+						font-weight: 900;
+						margin-bottom: 0;
+						line-height: 1.1em;
+					}
+
+					span{
+						font-weight:500;
+					}
+				}
+
+				.error-icon {
+					display: inline-block;
+					vertical-align: middle;
+					margin-left: 1em;
+
+					img{
+						height: 90px;
+					}
+				}
+			}
+
+			.description {
+				text-align: center;
+				font-size: 2.25em;
+				@extend .soft--ends;
+
+				p {
+					margin-bottom: 0;
+
+					&.brand-color {
+						font-size: 0.75em;
+					}
+				}
+			}
+
+			nav {
+				text-align: center;
+				@extend .soft--ends;
+
+				p {
+					font-size: 1.25em;
+					margin-bottom: 0;
+					text-align: center;
+				}
+
+				ul {
+					list-style: none;
+					margin: 0 !important;
+
+					li {
+						display: inline-block;
+						margin: 0.5em 1em;
+
+						a {
+							padding: 0.5em 2em;
+							border: $brand-color 1px solid;
+							border-radius: $brand-round;
+							display: block;
+							@include transition(all 0.15s linear);
+
+							&:hover {
+								background: $brand-color;
+								color: white;
+								@include transition(all 0.15s linear);
+							}
+						}
+					}
+				}
+			}
+
+			.cta {
+				margin: 0 auto;
+				text-align: center;
+			}
+		}
+	}
+}
+
+
+// iPhone Styles - (max-width: 480px)
+@include media-query(palm){
+
+	.four-oh-four {	
+		.page-container {
+			margin: 0em auto 70px auto;
+			
+			.page-wrap {
+
+				h1{
+					font-size: 50px !important;
+				}
+
+				nav{
+					ul{
+						li{
+							width:100%;
+							margin:10px 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}

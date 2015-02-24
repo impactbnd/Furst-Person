@@ -1,0 +1,11 @@
+{% text "category_link_#{block}" label="Category #{block}: What blog topic should this category link to?", value="http://DOMAIN-NAME.com/careers/topic/TOPIC-NAME", export_to_template_context=True %}
+
+%a{:href => "{{ widget_data.category_link_#{block}.value }}"}
+	.inner.soft--sides
+		{% image "career_icon_#{block}" label="Category #{block}: Choose a Icon for this Career", src="http://impactgit.wpengine.com/deli/assets/category-filler-icon.png" %}
+
+		%figcaption
+			{% header "category_title_#{block}" label="Category #{block}: Choose a Title for this Career Category", header_tag="h4", value="Product" %}
+			
+			%p
+				{% text "category_description_#{block}" label="Category #{block}: Write a short description for this category", value="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore." %}

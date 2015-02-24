@@ -1,0 +1,125 @@
+.careers{
+	.careers-hero{
+		text-align: center;
+		padding: 140px 0;
+		background-color:$brand-primary-color!important;
+
+		h1,h3{
+			color:#fff!important;
+		}
+	}
+
+	.choosepath{
+		padding:80px 0;
+		background: $brand-light-grey;
+
+		.category-wrapper{
+			overflow:hidden;
+
+			.inner{
+				height:265px;
+				background: #fff;
+				border: solid 1px #ccc;
+				text-align: center;
+				border-radius: 10px;
+				padding-top: 60px;
+				padding-bottom: 60px;
+				overflow:hidden;
+
+				img{
+					border-width: 0px;
+					max-height: 70px;
+				}
+
+				h4{
+					padding-top: 20px;
+					border-top: solid 1px #000;
+					display: inline-block;
+					width: 85%;
+					margin-top: 24px;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+
+	.category-wrapper {
+		position: relative;
+		z-index: 1;
+		display: inline-block;
+		text-align: center;
+		cursor: pointer;
+
+		a{
+			text-decoration: none;
+			color:$brand-black;
+		}
+	}
+
+	.inner:hover {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	.inner img{
+		opacity:100%;
+		@include transition(all 0.25s linear);
+	}
+
+	.inner:hover img{
+		opacity:0;
+	}
+
+	.inner h4 {
+		margin-top: 20%;
+		-webkit-transition: -webkit-transform 0.35s;
+		transition: transform 0.35s;
+		-webkit-transform: translate3d(0,0px,0);
+		transform: translate3d(0,20px,0);
+	}
+
+	.inner p {
+		opacity: 0;
+		-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+		transition: opacity 0.35s, transform 0.35s;
+		-webkit-transform: translate3d(0,0px,0) scale(1.1);
+		transform: translate3d(0,0px,0) scale(1.1);
+	} 
+
+	.inner:hover h4 {
+		-webkit-transform: translate3d(0,-95px,0);
+		transform: translate3d(0,-95px,0);
+	}
+
+	.inner:hover p {
+		opacity: 1;
+		-webkit-transform: translate3d(0,-95px,0) scale(1);
+		transform: translate3d(0,-95px,0) scale(1);
+	}
+}
+
+
+@include media-query(lap){
+	.careers{
+
+		.careers-hero{
+			padding: 70px 0px;
+		}
+	}
+}
+
+@include media-query(palm){
+	.careers{
+		padding-bottom: 220px !important;
+
+		.careers-hero{
+			padding: 70px 0px;
+		}
+
+		.choosepath{
+			.category-wrapper{
+				padding:24px 0px!important;
+			}
+		}
+	}
+}

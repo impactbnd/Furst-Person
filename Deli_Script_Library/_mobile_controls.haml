@@ -1,0 +1,52 @@
+$('.page-content').waypoint(function(direction) {
+console.log('this has been triggered');
+$('.mobile-slide-controls').slideToggle("fast");
+}, { offset: offSet});
+
+$(".mobile-slide-controls").find("a").click(function(event) {
+event.preventDefault();
+if ($(this).attr('href') != '#') {
+window.location.href = $(this).attr('href');
+}	
+else {
+if($(this).hasClass("subscribe-slide")) {
+if($('.mobile-social-sharing').css("display") != "none") {
+$('.mobile-social-sharing').slideToggle("fast");
+}
+$('.mobile-subscribe').slideToggle("fast");
+}
+else {
+if($('.mobile-subscribe').css("display") != "none") {
+$('.mobile-subscribe').slideToggle("fast");
+}
+$('.mobile-social-sharing').slideToggle("fast");
+}
+}
+});
+
+$("i.close").click(function() {
+console.log('close clicked');
+if($('.mobile-social-sharing').css("display") != "none") {
+$('.mobile-social-sharing').slideToggle("fast");
+}
+if($('.mobile-subscribe').css("display") != "none") {
+$('.mobile-subscribe').slideToggle("fast");
+}
+});
+
+setTimeout(function() {
+if($(".hs-input[name='already_subscribed_to_blog']").val() == "Yes") {
+$(".subscribe").hide();
+$(".subscribe-slide").parent().hide();
+$(".share-slide").parent().toggleClass("palm-one-half palm-one-whole");
+console.log('option #1');
+}
+}, 400);
+
+setTimeout(function() {
+
+if($(window).width() < 1024) {
+$(".mobile-subscribe").append($(".big-subscribe").find(".hs_cos_wrapper"));
+}
+
+}, 400);

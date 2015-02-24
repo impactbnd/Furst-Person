@@ -1,0 +1,66 @@
+/* Slimbar CTA Block */
+
+.slimbar-cta {
+	background: $brand-light-grey;
+	padding: $half-spacing 0px!important;
+	
+	.grid{
+		position:relative;
+
+		.slimbar-cta-copy {
+		}
+
+		.slimbar-buttons {
+			height: 100%;
+			position:absolute;
+			top:0;
+			bottom:0;
+
+			a{
+				@include vertical-align;
+				@extend .mofu-button;
+				@extend .full; 
+			}
+		}
+	}
+}
+
+// iPhone Styles - (max-width: 480px)
+@include media-query(palm){
+
+	.slimbar-cta-copy {
+		text-align:center;
+	}
+
+	.slimbar-buttons{
+		text-align:center;
+	}
+}
+
+// iPad Styles - (min-width: 481px) and (max-width: 1025px)
+@include media-query(lap){
+	
+	.slimbar-cta-copy {
+		text-align:center;
+	}
+
+	.slimbar-buttons{
+		text-align:center;
+	}	
+}
+
+// iPad and Up - (min-width: 481px)
+@include media-query(lap-and-up){
+}
+
+// Portable - (max-width: 1026px)
+@include media-query(portable){
+}
+
+// Desk - (min-width: 1027px)
+@include media-query(desk){
+}
+
+// Wide Desk - (min-width: 1200px)
+@include media-query(desk-wide){
+}

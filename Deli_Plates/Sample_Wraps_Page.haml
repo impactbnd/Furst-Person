@@ -1,0 +1,50 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+!!! 5
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	-# This Tells HubSpot To Include The Site Head
+	{% include "custom/page/Deli_Framework/Site_Head.html" %}
+
+	%body.subpage.fullWidth
+		
+		-# This Tells HubSpot To Include The Site Header
+		{% include "custom/page/Deli_Framework/Site_Header.html" %}
+
+
+
+		%div{:style => "background:#cccccc"}
+			.grid.text--center.soft--ends
+				%h3
+					Sample Modals
+				%a.fancybox{:href => "#modal-test1"}
+					Test Modal 1
+
+				%a.fancybox{:href => "#modal-test2"}
+					Test Modal 2
+
+				%a.fancybox{:href => "#modal-test3"}
+					Test Modal 3
+
+		.subscribe-waypoint
+
+		
+		= Haml::Engine.new(File.read('/Users/redpdt42/Sites/impact-framework/Deli_Wraps/_panel.haml')).render(Object.new, :block => "1")
+		= Haml::Engine.new(File.read('/Users/redpdt42/Sites/impact-framework/Deli_Wraps/_services_three_across.haml')).render(Object.new, :block => "1")
+		= Haml::Engine.new(File.read('/Users/redpdt42/Sites/impact-framework/Deli_Wraps/_slimbar_cta.haml')).render(Object.new, :block => "1")
+		= Haml::Engine.new(File.read('/Users/redpdt42/Sites/impact-framework/Deli_Wraps/_textured_bofu_cta.haml')).render(Object.new, :block => "1")
+		= Haml::Engine.new(File.read('/Users/redpdt42/Sites/impact-framework/Deli_Wraps/_three_slider.haml')).render(Object.new, :block => "1")
+
+		= Haml::Engine.new(File.read('/Users/redpdt42/Sites/impact-framework/Deli_Cold_Cuts/_pop_up_modal.haml')).render(Object.new, :block => "1")
+		-# This Tells HubSpot To Include The Site Footer
+		{% include "custom/page/Deli_Framework/Site_Footer.html" %}
+
+		= Haml::Engine.new(File.read('/Users/redpdt42/Sites/impact-framework/Deli_Cold_Cuts/_subscribe_sticky.haml')).render(Object.new, :block => "one")
+
+/
+	[hubspot-metadata]
+	{
+	"category": "page", 
+	"creatable": true,
+	"path": "custom/page/Deli_Framework/Sample_Wraps_Page"
+	}
+	[end-hubspot-metadata]

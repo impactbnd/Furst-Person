@@ -1,0 +1,9 @@
+-# Slimbar CTA - Narrow CTA block with a header, subheader, and CTA button floated to the right
+.slimbar-cta
+	.grid
+		.slimbar-cta-copy.grid__item.two-thirds.palm-one-whole>
+			{% header "download_cta_header" label="Slim Bar: Choose a Header", header_tag="h2", value="" %}
+			{% header "downlaod_cta_subheader" label="Slim Bar: Choose a Subheader", header_tag="h3", value="" %}
+		
+		.slimbar-buttons.grid__item.one-third.palm-one-whole>
+			{% cta "iphone_download_cta" label="Slim Bar: Choose a CTA", embed_code="" %}

@@ -1,0 +1,21 @@
+footer{
+	position:absolute;
+	width:100%;
+	bottom:0;
+	background: $brand-light-grey;
+
+	h5 {
+		margin-bottom: 0;
+		color: white;
+	}
+
+	.main-footer{
+		padding: $quarter-spacing 0;
+	}
+ 
+	.copyright-footer{
+		background: $brand-dark-grey;
+		padding:5px 0
+	}
+
+}

@@ -1,0 +1,28 @@
+{% choice "social_#{block}" label="Social Media #{block}: Choose which social media to link to", choices="Facebook, Twitter, Linkedin, Google Plus, Youtube, RSS", export_to_template_context=True %}
+{% text "social_links_#{block}" label="Social Media #{block}: Put in the link to the social media account (http://)", no_wrap=True, value="This is where you put your link", export_to_template_context=True %}
+
+{% if widget_data.social_#{block}.value == "Facebook" %}
+%a{:href => "{{ widget_data.social_links_#{block}.value }}",:target => "_blank"}
+	%i{:class => "fa fa-facebook"}
+
+{% elif widget_data.social_#{block}.value == "Twitter" %}
+%a{:href => "{{ widget_data.social_links_#{block}.value }}",:target => "_blank"}
+	%i{:class => "fa fa-twitter"}
+
+{% elif widget_data.social_#{block}.value == "Linkedin" %}
+%a{:href => "{{ widget_data.social_links_#{block}.value }}",:target => "_blank"}
+	%i{:class => "fa fa-linkedin"}
+
+{% elif widget_data.social_#{block}.value == "Google Plus" %}
+%a{:href => "{{ widget_data.social_links_#{block}.value }}",:target => "_blank"}
+	%i{:class => "fa fa-google-plus"}
+
+{% elif widget_data.social_#{block}.value == "Youtube" %}
+%a{:href => "{{ widget_data.social_links_#{block}.value }}",:target => "_blank"}
+	%i{:class => "fa fa-youtube"}
+
+{% elif widget_data.social_#{block}.value == "RSS" %}
+%a{:href => "{{ widget_data.social_links_#{block}.value }}",:target => "_blank"}
+	%i{:class => "fa fa-rss"}
+
+{% endif %}

@@ -1,0 +1,42 @@
+{% image "employee_image_#{block}" export_to_template_context=True, label="Team Member #{block}: Member Image", src="//s3.amazonaws.com/cdn1.hubspot.com/StockImages/Working%20Hard/7K0A0879.jpg" %}
+{% text "employee_name_#{block}" label="Team Member #{block}: Member Name", export_to_template_context=True, value="John Smith" %}
+{% text "employee_title_#{block}" label="Team Member #{block}: Member Job Title", export_to_template_context=True, value="Boss" %}
+{% image "employee_modal_background_image_#{block}" export_to_template_context=True, label="Team Member #{block}: Choose a background for this members pop-up box", src="//s3.amazonaws.com/cdn1.hubspot.com/StockImages/Working%20Hard/7K0A0246.jpg" %}
+{% text "employee_modal_twitter_url_#{block}" export_to_template_context=True, label="Team Member #{block}: Twitter URL - (http://)", value="" %}
+{% text "employee_modal_linkedin_url_#{block}" export_to_template_context=True, label="Team Member #{block}: Linkedin URL - (http://)", value="" %}
+
+.single{href: "#modal-#{block}",:rel => "#{block}", :style => "background:url('{{ widget_data.employee_image_#{block}.src }}')"}	
+	.name
+		%h2 
+			{{ widget_data.employee_name_#{block}.value }}
+		.title
+			{{ widget_data.employee_title_#{block}.value }}
+ 
+	%a.modalLink{:href => "#modal-side-#{block}"}
+		%i{:class => "fa fa-external-link"}
+
+-# This is the Modal Code
+.overlay
+.team-modal
+	.pop-modal{:id => "#{block}"}
+		%a.closeBtn
+			%span.glyphicon.glyphicon-remove
+				-#%i{:class => "fa fa-times-circle"}
+
+		.row-fluid.account
+			.employee-bg{:style => "background:url('{{ widget_data.employee_modal_background_image_#{block}.src }}');background-size:cover;"}
+				.profile-img{:style => "background:url('{{ widget_data.employee_image_#{block}.src }}')"}
+
+			.content
+				%h2
+					{{ widget_data.employee_name_#{block}.value }}
+				.title
+					{{ widget_data.employee_title_#{block}.value }}
+				.social-media
+					%a.twitter{:href => "http://{{ widget_data.employee_modal_twitter_url_#{block}.value }}",:target => "_blank"} 
+						%i{:class => "fa fa-twitter"}
+					%a.linkedin{:href => "http://{{ widget_data.employee_modal_linkedin_url_#{block}.value }}",:target => "_blank"} 
+						%i{:class => "fa fa-linkedin"}
+				.wrapper
+					.bio
+						{% text "employee_modal_bio_#{block}" label="Team Member #{block}: Member Bio", value="Here is a bio." %}

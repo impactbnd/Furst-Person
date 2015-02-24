@@ -1,0 +1,43 @@
+%div{:class => "post-wrap grid__item hard {% for topic in content.topic_list %}{{ topic.slug }}{% endfor %}"}>
+	%a{:href => "{{content.absolute_url}}"}>
+		%div{:class => "post-inner hard {% for topic in content.topic_list %}{{ topic.slug }}{% endfor %}" , :style => "background-image: url('{{ content.post_list_summary_featured_image|replace('/http://cdn2.hubspot.net/hub/#{$hubid}','') }}');background-size: cover!important"}>
+
+	%div{:class => "category {% for topic in content.topic_list %}{{ topic.slug }}{% endfor %}", :rel => "{{content.absolute_url}}"}>
+		%a{:href => "{% for topic in content.topic_list %}{{ group.absolute_url }}/topic/{{topic.slug}}{% endfor %}"}
+			{% for topic in content.topic_list %} {{ topic.name }} {% endfor %}
+	
+	%h4{:class => "soft--sides soft--top hard--bottom"}>
+		%a{:href => "{{content.absolute_url}}", :class => "article-info"}
+			{{ content.name|truncatehtml(95) }}
+
+	.time.soft--sides
+		%p>
+			By {{ content.blog_post_author.display_name }} on 
+			%span.timestamp
+				{{ content.publish_date_localized }}
+
+		.share-icons.visuallyhidden>
+			%a{:href => "https://www.facebook.com/sharer/sharer.php?u={{content.absolute_url}}", :target => "_new"}>
+				%i.fa.fa-facebook
+			%a{:href => "http://twitter.com/share?text={{ content.name }}&url={{content.absolute_url}}", :target => "_new"}>
+				%i.fa.fa-twitter
+			%a{:href => "http://www.linkedin.com/shareArticle?mini=true&url={{content.absolute_url}}&amp;title={{ content.name }}&amp;source={{ company_domain }}", :target => "_new"}>
+				%i.fa.fa-linkedin
+
+	%div{:class => "mobile-share-icons grid__item hard {% for topic in content.topic_list %}{{ topic.name }}{% endfor %}", :rel => "{{content.absolute_url}}"}
+		%a.grid__item.palm-one-quarter.one-quarter.lap-one-quarter.hard.twitter{href: "https://twitter.com/intent/tweet?text={{ page_meta.html_title }}&url={{ content.absolute_url }}", target: "_blank"}>
+			%span.twCount
+			.circle.twitter
+				%i.fa.fa-twitter
+		%a.grid__item.palm-one-quarter.one-quarter.lap-one-quarter.hard.linkedin{href: "https://www.linkedin.com/shareArticle?url={{ content.absolute_url }}&title={{ page_meta.html_title }}&summary={{ content.meta_description }}", target: "_blank"}>
+			%span.inCount
+			.circle.linkedin
+				%i.fa.fa-linkedin
+		%a.grid__item.palm-one-quarter.one-quarter.lap-one-quarter.hard.facebook{href: "https://www.facebook.com/sharer/sharer.php?u={{ content.absolute_url }}", target: "_blank"}>
+			%span.fbCount
+			.circle.facebook
+				%i.fa.fa-facebook
+		%a.grid__item.palm-one-quarter.one-quarter.lap-one-quarter.hard.google{href: "https://plus.google.com/share?url={{ content.absolute_url }}", target: "_blank"}>
+			%span.gplusCount
+			.circle.google
+				%i.fa.fa-google-plus

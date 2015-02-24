@@ -1,0 +1,95 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+%footer
+
+    .grid.main-footer.visuallyhidden--palm.visuallyhidden--lap
+        .grid__item.one-quarter>
+            Column One
+
+        .grid__item.one-quarter>
+            Column Two
+
+        .grid__item.one-quarter>
+            Column Three
+
+        .grid__item.one-quarter>
+            Column Four
+
+    %div.copyright-footer
+        .grid
+            .grid__item.one-whole.hard
+                %center
+                    %h5 
+                        Copyright &copy; {{ year }} {{site_settings.company_name}} | Site Design and Development by <a href="http://www.impactbnd.com" target="_new">IMPACT</a>
+
+    = Haml::Engine.new(File.read("/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_modal_items.haml")).render(Object.new)
+
+{{standard_footer_includes}}
+
+%script{:type => "text/javascript", :src => "//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
+%script{:src => "//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js", :type => "text/javascript"}
+%script{:type => "text/javascript", :src => "http://cdn2.hubspot.net/hub/299021/file-614748827-js/js/jquery.fitvids.js"}
+%script{:type => "text/javascript", :src => "http://cdn2.hubspot.net/hub/299021/file-630762906-js/js/jquery.cycle2.min.js"}
+%script{:type => "text/javascript", :src => "http://cdn2.hubspot.net/hub/299021/file-902642000-js/js/jquery.cycle2.scrollvert.min.js"}
+%script{:type => "text/javascript", :src => "http://cdn2.hubspot.net/hub/299021/file-677238804-js/js/jquery.waitforimages.js"}
+%script{:type => "text/javascript", :src => "//impactgit.wpengine.com/deli/js/jquery.cookie.js"}
+%script{:type => "text/javascript", :src => "//impactgit.wpengine.com/deli/js/impactMenu.js?t=913298"}
+%script{:type => "text/javascript", :src => "//impactgit.wpengine.com/deli/js/waypoints.min.js"}
+%script{:type => "text/javascript", :src => "https://cdn2.hubspot.net/hub/159154/file-963411773-js/js/waypoints-sticky.min.js"}
+
+:javascript
+    $(document).ready(function() {
+       
+        $('a.fancybox').fancybox({
+            maxWidth    : 800,
+            maxHeight   : 600,
+            fitToView   : false,
+            width       : '70%',
+            height      : '70%',
+            autoSize    : false,
+            closeClick  : false,
+            openEffect  : 'none',
+            closeEffect : 'none'
+        });
+
+        $('#slideshow-left').cycle({ 
+            fx: 'scrollHorz',
+            slides: '> div',
+            paused: true
+        });
+
+        $('#slideshow-center').cycle({ 
+            fx: 'scrollHorz',
+            slides: '> div',
+            next: '#next',
+            prev: '#prev',
+            paused: true
+        });
+
+        $('#slideshow-right').cycle({ 
+            fx: 'scrollHorz',
+            slides: '> div',
+            paused: true
+        });
+
+        //advanced logic for sliders
+        $( '#slideshow-center' ).on( 'cycle-next', function(event, optionHash) {
+            console.log('next triggered');
+            $('#slideshow-left').cycle('next');
+            $('#slideshow-right').cycle('next');
+        }).on( 'cycle-prev', function(event, optionHash) {
+            $('#slideshow-left').cycle('prev');
+            $('#slideshow-right').cycle('prev');
+        });
+
+        $(".mobile-menu").find(".off-canvas-list").prepend("<li style='background:#fff;'>"+$("#hs-link-logo").html()+"</li>");
+    })
+
+/
+    [hubspot-metadata]
+    {
+    "category": "include", 
+    "creatable": false,
+    "path": "custom/page/Deli_Framework/Site_Footer.html"
+    }
+    [end-hubspot-metadata]
+

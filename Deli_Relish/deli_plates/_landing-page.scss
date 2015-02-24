@@ -1,0 +1,11 @@
+.default-landing-page{
+	.content{
+		padding: $full-spacing 0px;
+
+		.left,.right{
+			@include media-query(palm){
+				padding:0px!important
+			}
+		}
+	}
+}

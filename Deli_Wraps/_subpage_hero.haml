@@ -1,0 +1,25 @@
+{% choice "subpage_hero_alignment" label="Hero Section: How would you like this section aligned", choices="Centered, Left", export_to_template_context=True %}
+{% choice "subpage_hero_layout" label="Hero Section: Choose a layout", choices="Just a Header, Header and Subheader, Simple Title Bar", export_to_template_context=True %}
+{% image "page_hero_image" export_to_template_context=True, label="Hero Section: Choose a Background Image", src="" %}
+{% header "subpage_main_hero_#{block}" label="Hero Section: Place your header here", header_tag="h1", value="This Is An H1", export_to_template_context=True %}
+{% header "subpage_sub_hero_#{block}" label="Hero Section: Place your subheader here", header_tag="h2", value="This Is An H2", export_to_template_context=True %}
+-# This is the start of the hero
+%div{:style => "background: {% if widget_data.page_hero_image.src %}url('{{ widget_data.page_hero_image.src }}') no-repeat!important; background-size: cover!important;background-position:center!important;{% else %}background:rgb(81, 162, 171);{% endif %}", :class => "subpage-hero {% if widget_data.subpage_hero_layout.value == 'Simple Title Bar' %}title-bar{% endif %}"}
+
+	.grid
+		.grid__item.one-whole.hard
+			-# This is the start of hero if statements
+			{% if widget_data.subpage_hero_layout.value == "Just a Header" %}
+			%h1{:style => "{% if widget_data.subpage_hero_alignment.value == 'Centered' %}text-align:center{% else %}text-align:left;{% endif %}"}
+				{{ widget_data.subpage_main_hero_#{block}.value }}
+			
+			{% elif widget_data.subpage_hero_layout.value == "Header and Subheader" %}
+			%h1{:style => "{% if widget_data.subpage_hero_alignment.value == 'Centered' %}text-align:center{% else %}text-align:left;{% endif %}"}
+				{{ widget_data.subpage_main_hero_#{block}.value }}
+			%h2{:style => "{% if widget_data.subpage_hero_alignment.value == 'Centered' %}text-align:center{% else %}text-align:left;{% endif %}"}
+				{{ widget_data.subpage_sub_hero_#{block}.value }}
+
+			{% elif widget_data.subpage_hero_layout.value == "Simple Title Bar" %}
+			%h1.title.text--left
+				{{ page_meta.html_title }}
+			{% endif %}

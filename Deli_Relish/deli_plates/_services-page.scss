@@ -1,0 +1,17 @@
+.services{
+	.main-content{
+		padding:$half-spacing;
+		.one-third{
+			padding: 0px 33px!important;
+			margin-bottom: 3%;
+			@media(max-width:480px){
+				padding:0px!important;
+			}
+			@extend .palm-one-whole;
+			@extend .lap-one-half;
+			.ta-image{
+				padding-bottom: 3%;
+			}
+		}
+	}	
+}

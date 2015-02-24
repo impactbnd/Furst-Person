@@ -1,0 +1,203 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+
+!!! 5
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	#{Kernel.includeFile("Cold_Cuts", "_category_options", :block => "one")}
+
+
+	-# This Tells HubSpot To Include The Site Head
+	{% include "custom/page/Deli_Framework/Site_Head.html" %}
+
+	%body.blog.community
+		
+		-# This Tells HubSpot To Include The Site Header
+		{% include "custom/page/Deli_Framework/Site_Header.html" %}
+
+		#{Kernel.includeFile("Cold_Cuts", "_subscribe_sticky", :block => "one")}
+		#{Kernel.includeFile("Cold_Cuts", "_popup_offer_modal", :block => "one")}
+		
+		-#Hero Section
+		.community-hero>
+			.content.grid
+				.grid__item.one-whole.soft--sides.text--center
+					%h1
+						{{ content_group.public_title }}
+
+					%center
+						{% blog_subscribe "my_blog_subscribe" title="Place Your Form Heading Here" %}
+
+		#{Kernel.includeFile("Cold_Cuts", "_blog_subscribe_portable", :block => "one")}
+
+		-# Topic Section
+		.main-wrapper>
+			.topic-wrapper.grid>
+				.community-topics.text--center.grid__item.hard>
+					%ul.soft--sides
+						{% for topic in topics %}
+						%li{:class => "{{ topic_classes[topic] }} {{ topic_width}}"}
+							%a{:href => "{{ topic_url[topic] }}"}
+								{{ topic_text[topic] }}
+
+						{% endfor %}
+						
+
+		.grid.main-content.subscribe-waypoint>
+
+			{% if is_listing_view %}
+			{# simple_list_page indicates the "blog/all" page, which is a list of links to every blog post #}
+
+			#community-listing.community-listing.hard>
+
+				{% if not simple_list_page %}
+
+				-# Featured Post Start
+				{% for content in contents %}
+				{%- if loop.first -%}
+				.featured-wrapper.grid__item.two-thirds.lap-one-whole.palm-one-whole.post-wrapper>
+					#{Kernel.includeFile("Cold_Cuts", "_blog_post", :block => "one")}
+				{%- endif -%}
+				{% endfor %}
+
+				-# Search Box & CTA Section
+				.smart-cta.grid__item.one-third.lap-one-half.palm-one-whole.visuallyhidden--portable
+					
+					{% google_search "my_google_search" label="My Google Search", prefill_input_with_pathname=False, search_button_text="Search", search_field_label="Enter Search Term" %}
+
+					<!--HubSpot Call-to-Action Code -->
+					<span class="hs-cta-wrapper" id="hs-cta-wrapper-b122c675-d053-40da-83be-8ca49da7746e">
+					<span class="hs-cta-node hs-cta-b122c675-d053-40da-83be-8ca49da7746e" id="hs-cta-b122c675-d053-40da-83be-8ca49da7746e">
+					<!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]-->
+					<a href="http://cta-redirect.hubspot.com/cta/redirect/298890/b122c675-d053-40da-83be-8ca49da7746e"><img class="hs-cta-img" id="hs-cta-img-b122c675-d053-40da-83be-8ca49da7746e" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/298890/b122c675-d053-40da-83be-8ca49da7746e.png" /></a>
+					</span>
+					<script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
+					<script type="text/javascript">
+					hbspt.cta.load(298890, 'b122c675-d053-40da-83be-8ca49da7746e');
+					</script>
+					</span>
+					<!-- end HubSpot Call-to-Action Code -->
+
+				-# Posts Loop
+				{% for content in contents %}
+				{%- if not loop.first -%}
+				.padding-wrapper.grid__item.one-third.lap-one-half.palm-one-whole.post-wrapper
+					#{Kernel.includeFile("Cold_Cuts", "_blog_post", :block => "one")}
+				{%- endif -%}
+				{% endfor %}
+
+				-# Next/Prev Buttons
+				.blog-pagination.one-whole.visuallyhidden>
+					{%- if last_page_num -%}
+					.previous-posts-link>
+						%a{:href => "{{ blog_page_link(last_page_num) }}"}
+							Previous
+					{%- endif -%}
+					.all-posts-link>
+						%a{:href => "{{ group.absolute_url }}/all"}
+							All posts
+					{%- if next_page_num -%}
+					.next-posts-link>
+						%a.next-posts-link-a{:href => "{{ blog_page_link(next_page_num) }}"}
+							Next
+					{%- endif -%}
+
+
+				{%- endif -%}
+
+				-# Closes "is_listing_view"
+				{% endif %}
+
+	-# This Tells HubSpot To Include The Site Footer
+	{% include "custom/page/Deli_Framework/Site_Footer.html" %}
+
+	%script{:type => "text/javascript", :src => "http://cdn2.hubspot.net/hub/299021/file-1152548840-js/js/ajaxscroll.min.js"}
+
+	:javascript
+		#{Kernel.includeFile("Script_Library", "_popup_offer_modal", :block => "one")}
+		
+		var ias = $.ias({
+			container:  '#community-listing',
+			item:       '.post-wrapper',
+			pagination: '.blog-pagination',
+			next:       '.next-posts-link-a'
+		});
+
+		ias.extension(new IASSpinnerExtension());
+		ias.on('render', function(items) {
+			$(items).each(function(index) {
+
+				if($(this).find('.post-inner').length > 0) {
+
+					if($(this).hasClass('two-thirds')) {
+						console.log('wamp');
+						$(this).toggleClass('two-thirds one-third featured-wrapper lap-one-half');
+
+						$(this).find('.featured').toggleClass('featured');
+
+						$(this).find('.one-twelfth').toggleClass('one-twelfth one-quarter');
+
+						$(this).find('h2').replaceWith(function() {
+							return '<h4 class="soft--sides soft--top hard--bottom">' + $(this).html() + '</h4>';
+						});
+
+						$(this).find('.post-wrap').append($(this).find('.mobile-share-icons').removeClass('one-half'));
+					}
+
+					var mbi = $(this).find('.mobile-share-icons');
+					var data="url="+$(this).find('.mobile-share-icons').attr('rel')+"&apikey=42705988166d6b53252a98c5f16101ec3e391e34"
+					//console.log(data);
+					$.ajax({
+						url: "http://free.sharedcount.com",
+						type: "get",
+						data: data,
+						dataType: "json",
+						success: function(json) {
+							var Facebook = json.Facebook.total_count;
+							var Twitter = json.Twitter;
+							var linkedIN = json.LinkedIn;
+							var GooglePlusOne = json.GooglePlusOne;
+
+							$(mbi).find(".twCount").html(Twitter);
+							$(mbi).find(".inCount").html(linkedIN);
+							$(mbi).find(".fbCount").html(Facebook);
+							$(mbi).find(".gplusCount").html(GooglePlusOne);
+						}
+					});
+				}
+				$(this).addClass('late-load');
+			});
+		});
+		ias.extension(new IASNoneLeftExtension({html: "<div class='end-text' style='margin:auto'><p><em>You Have Reached the End of Our Posts, Please Consider Subscribing If You Haven't Already!</em></p></div>"}));
+
+		pathname = window.location.pathname;
+
+		$(document).ready(function() {
+			#{Kernel.includeFile("Script_Library", "_blog_subscribe_portable", :block => "one")}
+			#{Kernel.includeFile("Script_Library", "_mobile_share_icons", :block => "one")}
+			#{Kernel.includeFile("Script_Library", "_subscribe_sticky", :block => "one")}
+			
+			var $select = $('<select class="community-topics-dropdown grid__item " />');
+
+			$('.community-topics ul').find('a').each(function() {
+				var $option = $('<option />');
+				$option.attr('value', $(this).attr('href')).html($(this).html());
+				$select.append($option);
+			});
+
+			$('.community-topics').append($select);
+
+			$('.community-topics-dropdown').prepend("<option value='#' selected='selected'>Choose A Category</option>");
+
+			$select.change(function() {
+				window.location.href = $(this).val();
+			});
+				
+		});
+/
+	[hubspot-metadata]
+	{
+	"category": "blog",
+	"creatable": true,
+	"path": "custom/page/Deli_Framework/Blog_Blocked_Layout"
+	}
+	[end-hubspot-metadata]

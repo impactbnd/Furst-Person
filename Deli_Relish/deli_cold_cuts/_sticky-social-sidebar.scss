@@ -1,0 +1,26 @@
+.socialsidebar {
+	position:absolute;
+
+	.sticky-wrapper {
+		text-align:center;
+	}
+
+	.social-sharing-widget-vertical {
+		width:100px;
+		background: none repeat scroll 0% 0% #FFF !important;
+		padding: 20px;
+		border:solid 1px #dedede;
+		border-top:solid 5px $brand-primary-color;
+		-webkit-border-top-left-radius: 3px;
+		-webkit-border-bottom-left-radius: 3px;
+		-moz-border-radius-topleft: 3px;
+		-moz-border-radius-bottomleft: 3px;
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
+
+		&.stuck {
+			position:fixed;
+			top:130px;
+		}
+	}
+}

@@ -1,0 +1,63 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+!!! 5
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	-# This Tells HubSpot To Include The Site Head
+	{% include "custom/page/Deli_Framework/Site_Head.html" %}
+
+	%body.careers-post
+		
+		-# This Tells HubSpot To Include The Site Header
+		{% include "custom/page/Deli_Framework/Site_Header.html" %}
+
+		{% image "hero_image_background" label="Choose a Background for your Post Header", export_to_template_context=True %}
+
+		{% text "job_location" label="Which Office Location is this Job for?", value="Beverly, MA", export_to_template_context=True %}
+
+		{% text "apply_link" label="Where should the apply button link to?", value="http://www.dataonesoftware.com", export_to_template_context=True %}
+
+		.careers-header{:style => "background: url('{{ widget_data.hero_image_background.src }}')"}
+
+		.career-post-content.grid
+
+			%center
+				.inner.grid__item.hard.text--left.three-quarters.portable-one-whole
+					
+					.position-overview.grid__item.hard--sides.soft--ends.one-whole
+						.soft--sides
+							%h1
+								{{ content.name }}
+
+							.grid__item.hard.one-half.palm-one-whole>
+								{{ widget_data.job_location.value }} | {% for topic in content.topic_list %}{{ topic.name }}{% endfor %}
+
+							.grid__item.text--right.one-half.palm-one-whole>
+								Posted on {{ content.publish_date_localized }}
+
+					.post-body.soft--ends.soft--sides
+						{{ content.post_body }}
+
+					.apply-link.text--center.soft--ends
+						%a{:href => "{{ widget_data.apply_link.value }}"} Apply for this Job
+			
+			%center
+				.about.text--left.soft--ends.soft--sides.three-quarters.portable-one-whole
+					%h4
+						About Company Name
+					%p
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pulvinar quam a tempor sodales. Mauris iaculis leo ac ipsum eleifend, vitae ultricies orci ultrices. Nullam ligula tortor, ultrices ornare dictum at, fringilla vel dolor. Mauris mattis turpis quis urna lacinia semper.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pulvinar quam a tempor sodales. Mauris iaculis leo ac ipsum eleifend, vitae ultricies orci ultrices. Nullam ligula tortor, ultrices ornare dictum at, fringilla vel dolor. Mauris mattis turpis quis urna lacinia semper.
+
+
+
+			
+		-# This Tells HubSpot To Include The Site Footer
+		{% include "custom/page/Deli_Framework/Site_Footer.html" %}
+
+/
+	[hubspot-metadata]
+	{
+	"category": "blog", 
+	"creatable": true,
+	"path": "custom/page/Deli_Framework/Careers_Single_Post"
+	}
+	[end-hubspot-metadata]

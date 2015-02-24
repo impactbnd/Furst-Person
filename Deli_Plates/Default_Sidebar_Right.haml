@@ -1,0 +1,34 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+!!! 5
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	-# This Tells HubSpot To Include The Site Head
+	{% include "custom/page/Deli_Framework/Site_Head.html" %}
+
+	%body.subpage.sidebar-right
+
+		-# This Tells HubSpot To Include The Site Header
+		{% include "custom/page/Deli_Framework/Site_Header.html" %}
+
+		= Haml::Engine.new(File.read("/Users/impactbnd/Sites/impact-framework/Deli_Wraps/_subpage_hero.haml")).render(Object.new, :block => "one")
+		
+		.grid
+			.grid__item.two-thirds.soft--right.hard--left>
+				.copy
+					{% rich_text "Page Content" label="Page Content", no_wrapper=True, html="<h2>An Example of a H2</h2><h3>An example of an H3</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>" %}
+
+			.grid__item.one-third.soft--left>
+				.sidebar
+					{% cta "subpage_sidebar_cta" %}
+	
+	-# This Tells HubSpot To Include The Site Footer
+	{% include "custom/page/Deli_Framework/Site_Footer.html" %}
+
+/
+	[hubspot-metadata]
+	{
+	"category": "page", 
+	"creatable": true,
+	"path": "custom/page/Deli_Framework/Default_Sidebar_Right_Page"
+	}
+	[end-hubspot-metadata]

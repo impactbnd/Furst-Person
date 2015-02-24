@@ -1,0 +1,10 @@
+.ta-block.whitespace.hard.grid__item.one-third.lap-one-whole.palm-one-whole>
+	.ta-icon.grid__item.one-whole.lap-one-third.soft--sides>
+		%center
+			{% image "ta_image_#{block}" label="Three Column - Column #{block}: Choose an Image", no_wrapper=True, src="" %}
+	.ta-copy.grid__item.one-whole.lap-two-thirds.soft--sides>
+		{% header "ta_header_#{block}" label="Three Column - Column #{block}: Choose a Header", header_tag="h3",no_wrapper=True, value="This is a sample header" %}
+		{% rich_text "ta_copy_#{block}" label="Three Column - Column #{block}: Place column content here", no_wrapper=True, value="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." %}
+		
+		.ta-button.grid__item.one-whole.soft--sides>
+			{% cta "learn_more_#{block}" label="Three Column - Column #{block}: Choose a CTA", no_wrapper=True %}

@@ -1,0 +1,58 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+!!! 5
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	-# This Tells HubSpot To Include The Site Head
+	{% include "custom/page/Deli_Framework/Site_Head.html" %}
+
+	%body.subpage.four-oh-four
+		
+		.page-container.soft--sides.soft--ends
+			.page-wrap.grid.soft--sides.soft--ends
+				.error.one-whole
+					
+					.error-icon.soft--right.visuallyhidden--palm>
+						%img{:src => "http://impactgit.wpengine.com/deli/assets/error-icon.png"}
+
+					.error-text>
+						%h1
+							404 
+							%span
+								ERROR
+
+				.description
+					%p.brand-color
+						Oops, something went wrong! The page you are looking for does not exist.
+
+				%nav
+					%p
+						Here are some useful pages to help you find your way:
+					%ul
+						%li
+							%a{:href => "#"} Link
+
+						%li
+							%a{:href => "#"} Link
+
+						%li
+							%a{:href => "#"} Link
+
+						%li
+							%a{:href => "#"} Link
+
+				%center
+					.cta.grid__item.visuallyhidden--palm.hard.three-quarters
+						Place CTA Embed Code Here
+
+	
+	-# This Tells HubSpot To Include The Site Footer
+	{% include "custom/page/Deli_Framework/Site_Footer.html" %}
+
+/
+	[hubspot-metadata]
+	{
+	"category": "page", 
+	"creatable": true,
+	"path": "custom/page/Deli_Framework/404_Page"
+	}
+	[end-hubspot-metadata]

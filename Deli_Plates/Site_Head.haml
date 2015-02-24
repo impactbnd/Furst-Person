@@ -1,0 +1,32 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+
+-#{Kernel.includeFile("Cold_Cuts", "_three_across_cold_cut", "one")}
+
+%head
+    %meta{:charset => "utf-8"}
+    %meta{:name => "author", :content => "{{ site_settings.company_name }}"}
+    %meta{:name => "description", :content => "{{ page_meta.meta_description }}"}
+    %meta{:name => "generator", :content => "HubSpot"}
+    %meta{:name => "viewport", :content => "width=device-width initial-scale=1.0"}
+     
+    %title Site Title | {{ page_meta.html_title }}
+    
+    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+
+    {% block header %} {% endblock %}
+      
+    %link{:rel => "stylesheet", :type => "text/css", :href => "//impactgit.wpengine.com/deli/styles/style.css"}
+    %link{:href => "//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css", :rel => "stylesheet"}
+    
+    %link{:href => "//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css", :rel => "stylesheet"}
+
+    {{ standard_header_includes }}
+
+/
+    [hubspot-metadata]
+    {
+    "category": "include", 
+    "creatable": false,
+    "path": "custom/page/Deli_Framework/Site_Head.html"
+    }
+    [end-hubspot-metadata]

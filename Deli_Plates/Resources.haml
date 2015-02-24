@@ -1,0 +1,72 @@
+= Haml::Engine.new(File.read(File.dirname(File.expand_path("..",__FILE__))+"/Config/config.haml")).render(Object.new, :relative => File.expand_path("../..",__FILE__))
+!!! 5
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	-# This Tells HubSpot To Include The Site Head
+	{% include "custom/page/Deli_Framework/Site_Head.html" %}
+
+	%body.buyer-persona-subpage
+
+		-# This Tells HubSpot To Include The Site Header
+		{% include "custom/page/Deli_Framework/Site_Header.html" %}
+
+		-# = Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/_blocks/_hero-secondary.haml')).render(Object.new, :block => "one", :defaultIMG => "http://cdn2.hubspot.net/hub/299021/file-595402888-png/assets/default-hero-bg.png")
+
+		.grid>
+			#resource_sorter
+				= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_resource_sort.haml')).render(Object.new)
+
+			#resource_sorted.grid__item.one-whole.hard>
+				= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_resource_item.html')).render(Object.new, :block => "1")
+
+				= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_resource_item.html')).render(Object.new, :block => "2")
+
+				= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_resource_item.html')).render(Object.new, :block => "3")
+
+				= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Cold_Cuts/_resource_item.html')).render(Object.new, :block => "4")
+
+
+		= Haml::Engine.new(File.read('/Users/impactbnd/Sites/impact-framework/Deli_Wraps/_textured_bofu_cta.haml')).render(Object.new, :block => "one")
+
+	-# This Tells HubSpot To Include The Site Footer
+	{% include "custom/page/Deli_Framework/Site_Footer.html" %}
+	
+	%script{:type => "text/javascript", :src => "http://cdn2.hubspot.net/hub/299021/file-644850801-js/js/jquery.mixitup.js"}
+
+	:javascript
+		$('document').ready(function() {
+			$('#resource_sorted').mixItUp();
+
+			$('.img-inner').hover(
+			  function() {
+			    $( this ).children('.tooltip').fadeIn('fast');
+			  }, function() {
+			    $( this ).children('.tooltip').fadeOut('fast');
+			  }
+			);
+
+			$( ".img-inner" ).each(function() {
+				var value = $(this).css('background-image'); // value = 9.61 use $("#text").text() if you are not on select box...
+				value = value.replace("//cdn2.hubspot.net/hub/298890/http:", "http:");
+
+			});
+
+			$( "div.filter" ).each(function() {
+				var filter = $(this).data('filter');
+				var text = $(this).text();
+				$( "#resourceSelect" ).append( "<option value='"+filter+"'>"+text+"</option>" );
+			});
+
+			$('#resourceSelect').change(function() {
+				$('#resource_sorted').mixItUp('filter', $(this).val());
+			});
+		});
+
+/
+	[hubspot-metadata]
+	{
+	"category": "page",
+	"creatable": true,
+	"path": "custom/page/Deli_Framework/Resources_Page"
+	}
+	[end-hubspot-metadata]

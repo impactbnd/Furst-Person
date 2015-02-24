@@ -1,0 +1,28 @@
+.subpage-hero{
+	padding:110px 0px;
+	background:$brand-color;
+	@media(max-width:1280px){
+		padding:85px 0px;
+	}
+	@media(max-width:1024px){
+		padding:75px 0px;
+	}
+	@media(max-width:480px){
+		padding:45px 0px;
+	}
+	h1{
+		color:#fff;
+	}
+	h2{
+		margin-bottom:0px;
+		color:#fff;
+	}
+
+	&.title-bar{
+		padding: 15px 0px;
+		
+		.title{
+			margin:0px!important;
+		}
+	}
+}
